@@ -1,46 +1,42 @@
-import Link from "next/link";
-import { FaInbox, FaSearch, FaUserFriends } from "react-icons/fa";
-import { AiFillSetting } from "react-icons/ai";
+import React from 'react';
 
-export default function Footer() {
+const Footer = () => {
    return (
-      <footer className="md:hidden p-3 border-t border-gray-200 bottom-0 sticky bg-white">
-         <nav className="flex justify-between items-center">
-            <Link href={'/'} className="hover:underline h-14 hover:bg-blue-500 w-14 flex items-center justify-center mb-3 rounded-lg">
-               <div className="h-8 w-14 flex items-center justify-center rounded-xl">
-                  <FaInbox
-                     size={24}
-                     className='hover:fill-white'
-                  />
-               </div>
-            </Link>
-            <Link href={'/contacts'} className="hover:underline h-14 hover:bg-blue-500 w-14 flex items-center justify-center mb-3 rounded-lg">
-               <div className="h-8 w-14 flex items-center justify-center rounded-xl">
-                  <FaUserFriends
-                     size={24}
-                     className='hover:fill-white'
-                  />
-               </div>
-            </Link>
-
-            <Link href={'/search'} className="hover:underline h-14 hover:bg-blue-500 w-14 flex items-center justify-center mb-3 rounded-lg">
-               <div className="h-8 w-14 flex items-center justify-center rounded-xl">
-                  <FaSearch
-                     size={24}
-                     className='hover:fill-white'
-                  />
-               </div>
-            </Link>
-
-            <Link href={'/settings'} className="hover:underline h-14 hover:bg-blue-500 w-14 flex items-center justify-center mb-3 rounded-lg">
-               <div className="h-8 w-14 flex items-center justify-center rounded-xl">
-                  <AiFillSetting
-                     size={24}
-                     className='hover:fill-white'
-                  />
-               </div>
-            </Link>
-         </nav>
-      </footer>
+      <aside className="hidden lg:block bg-gray-100 p-4 w-64 shadow-lg">
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">App Information</h2>
+            <p className="text-sm text-gray-600">Learn more about our app features, user guides, and more.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Trends</h2>
+            <p className="text-sm text-gray-600">Stay updated with the latest trends and updates in our app.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Terms & Conditions</h2>
+            <p className="text-sm text-gray-600">Read our terms and conditions to understand our policies.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Support</h2>
+            <p className="text-sm text-gray-600">Need help? Visit our support page for assistance.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Developer Teams</h2>
+            <p className="text-sm text-gray-600">Meet our dedicated developer teams and learn about their work.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Location</h2>
+            <p className="text-sm text-gray-600">Our headquarters are located in XYZ city, Country.</p>
+         </div>
+         <div className="mb-4">
+            <h2 className="text-xl font-bold mb-2">Contacts</h2>
+            <p className="text-sm text-gray-600">Get in touch with us via email: contact@example.com</p>
+         </div>
+         <div>
+            <h2 className="text-xl font-bold mb-2">Get in Touch</h2>
+            <p className="text-sm text-gray-600">We'd love to hear from you! Reach out to us anytime.</p>
+         </div>
+      </aside>
    );
-}
+};
+
+export default Footer;

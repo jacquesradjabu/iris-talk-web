@@ -17,7 +17,7 @@
 import Link from "next/link";
 export default function Logo() {
    return (
-      <Link href={'/'}>
+      <Link href={'/home'}>
          <div className="h-10 bg-blue-400 rounded-md w-10 text-gray-50 flex items-center justify-center hover:bg-blue-500">
             <p className="font-medium text-[20px]">InB</p>
          </div>

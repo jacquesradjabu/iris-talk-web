@@ -65,7 +65,7 @@ export default function Login() {
       <div className="flex items-center justify-center min-h-screen mx-auto">
          <ToastsContainer store={ToastsStore} lightBackground/>
          <form onSubmit={handleSubmit(onSubmit)} className="p-6  w-full max-w-sm md:border md:border-gray-100">
-            <h1 className="my-4 text-xl font-bold text-center">Login into your account</h1>
+            <h1 className="my-4 text-xl font-bold text-center text-slate-800">Login into your account</h1>
             <div className="mb-4">
                <Input
                   type="name"
@@ -94,7 +94,7 @@ export default function Login() {
             />
 
             <div className="text-center text-sm">
-               <span className="text-[#71717A]">Don't have an account?</span> <Link href="/register" className="text-[#8098F9] hover:underline font-bold">create an account</Link>
+               <span className="text-[#71717A]">Don't have an account?</span> <Link href="/register" className="text-[#8098F9] hover:underline font-bold">Create an account</Link>
             </div>
          </form>
       </div>

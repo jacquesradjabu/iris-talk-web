@@ -18,6 +18,9 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
+import Link from 'next/link';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
 const url = 'http://localhost:8000/register';
 type Inputs = {
    email: string;
@@ -42,33 +45,51 @@ export default function Register() {
       }
    };
    return (
-      <div className="p-4">
-         <h1 className="text-2xl font-bold mb-4">Register Screen</h1>
-         <form onSubmit={handleSubmit(onSubmit)}>
-            <input
-               {...register('name', { required: true })}
-               type="text"
-               placeholder="Name"
-               className="border border-gray-300 p-2 mb-4 w-full"
+      <div className="flex items-center justify-center min-h-screen mx-auto">
+         <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='p-6  w-full max-w-sm md:border md:border-gray-100'>
+            <h1 className="my-4 text-xl font-bold text-center text-slate-800">Create your account</h1>
+            <div className='mb-4'>
+               <Input
+                  type="name"
+                  placeholder="Name"
+                  name="name" register={register}
+                  message="Name is required"
+               />
+            </div>
+            <div className='mb-4'>
+               <Input
+                  type="email"
+                  placeholder="Email"
+                  name="email" register={register}
+                  message="Email is required"
+               />
+            </div>
+            <div className="mb-4">
+               <Input
+                  type="password"
+                  placeholder="Password"
+                  name="email" register={register}
+                  message="Password is required"
+               />
+            </div>
+            <div className="mb-4">
+               <Input
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="confirmPassword" register={register}
+                  message="Password does not match"
+               />
+            </div>
+            <Button
+               title="REGISTER"
+               classes="w-full mb-4 bg-[#8098F9] text-gray-100"
             />
-            <input
-               {...register('email', { required: true })}
-               type="email"
-               placeholder="Email"
-               className="border border-gray-300 p-2 mb-4 w-full"
-            />
-            <input
-               {...register('password', { required: true })}
-               type="password"
-               placeholder="Password"
-               className="border border-gray-300 p-2 mb-4 w-full"
-            />
-            <button
-               type="submit"
-               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-            >
-               Register
-            </button>
+
+            <div className="text-center text-sm">
+               <span className="text-[#71717A]">You have account?</span> <Link href="/" className="text-[#8098F9] hover:underline font-bold">Login now</Link>
+            </div>
          </form>
       </div>
    );

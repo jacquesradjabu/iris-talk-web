@@ -21,8 +21,8 @@ type ButtonProps = {
 export default function Button({ title, classes }: ButtonProps) {
     return (
         <button
-            className={`hover:opacity-85 flex items-center h-10 pl-4 justify-center pr-6 gap-2 rounded-md ${classes}`}>
-            <p className='font-bold text-medium'>{title}</p>
+            className={`hover:opacity-85 flex items-center h-10 pl-6 justify-center pr-6 rounded-md ${classes}`}>
+            <p className='text-medium'>{title}</p>
         </button>
     );
 }

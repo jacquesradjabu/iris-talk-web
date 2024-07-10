@@ -17,25 +17,31 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./index.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-
-type RootLayoutProps = {
+type HomeLayoutProps = {
    children: ReactNode;
 }
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-   title: "Inbox",
-   description: "inbox chat social media",
+   title: "home",
+   description: "inbox chat social media reseau social home page page d'acceuil",
 };
 
-export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
    return (
       <html lang="en">
-         <body className={inter.className}>
-            {children}
+         <body className={`${inter.className} min-h-screen overflow-hidden`}>
+            <Header />
+            <main className="flex flex-col lg:flex-row container">
+               <Footer />
+               <div className="flex-1 overflow-scroll">
+                  {children}
+               </div>
+            </main>
          </body>
       </html>
    );
