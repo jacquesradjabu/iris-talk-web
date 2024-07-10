@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
    return (
       <html lang="en">
          <body className={inter.className}>
-            <Header />
+            {/* <Header /> */}
             <main>
                {children}
             </main>
