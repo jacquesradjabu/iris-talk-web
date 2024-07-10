@@ -22,11 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+import ContactCard from "@/components/ContactCard";
+import SearchBar from "@/components/SearchBar";
+
 
 export default function Search(){
    return (
-      <div>
+      <div className="container p-2">
          <h1>Search</h1>
+         <SearchBar />
+         <ContactCard name={'William'} description="I love coding" />
+         <ContactCard name={'Julien'} description="I love design" />
+         <ContactCard name={'tutka'} description="I love python" />
+         <ContactCard name={'Firmin'} description="I love django" />
+         <ContactCard name={'Emmanuel'} description="I can hack NASA" />
+         <ContactCard name={'Birusha'} description="Backend developer" />
+         <ContactCard name={"Jed Connect"} description="I can connect the world"  />
+         <ContactCard name={'landbit'} description="I can use 64bit" />
+         <ContactCard name={'Abel'} description="I love open source project" />
       </div>
    );
 }

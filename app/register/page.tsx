@@ -14,17 +14,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-export default function Register(){
+"use client";
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import axios from 'axios';
+const url = 'http://localhost:8000/register';
+type Inputs = {
+   email: string;
+   password: string;
+   name: string;
+}
+export default function Register() {
+   const [message, setMessage] = useState('');
+   const [error, setError] = useState('');
+   const { register, handleSubmit } = useForm<Inputs>();
+   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
+      try {
+         // Replace 'your-backend-url' with your actual backend URL
+         const response = await axios.post(url, data);
+         const result = response;
+         console.log(result);
+         // window.location.href = '/';
+         // Handle success (e.g., redirect, show success message)
+      } catch (error) {
+         console.error('Registration failed!', error);
+         // Handle error (e.g., show error message)
+      }
+   };
    return (
-      <div>
-         <h1>Register Screen</h1>
-         <form>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password"/>
-            <button type="submit">Register</button>
+      <div className="p-4">
+         <h1 className="text-2xl font-bold mb-4">Register Screen</h1>
+         <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+               {...register('name', { required: true })}
+               type="text"
+               placeholder="Name"
+               className="border border-gray-300 p-2 mb-4 w-full"
+            />
+            <input
+               {...register('email', { required: true })}
+               type="email"
+               placeholder="Email"
+               className="border border-gray-300 p-2 mb-4 w-full"
+            />
+            <input
+               {...register('password', { required: true })}
+               type="password"
+               placeholder="Password"
+               className="border border-gray-300 p-2 mb-4 w-full"
+            />
+            <button
+               type="submit"
+               className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            >
+               Register
+            </button>
          </form>
       </div>
    );

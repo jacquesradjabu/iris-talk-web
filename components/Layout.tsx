@@ -14,33 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ReactNode } from "react";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "@/components/Header";
-import "./index.css";
+import { ReactNode } from "react"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer";
 
 
-type RootLayoutProps = {
-   children: ReactNode;
-}
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-   title: "Inbox",
-   description: "inbox chat social media",
-};
-
-export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
+export default function Layout({ children }: { children: ReactNode }) {
    return (
-      <html lang="en">
-         <body className={inter.className}>
-            {/* <Header /> */}
-            <main>
-               {children}
-            </main>
-         </body>
-      </html>
+      <div className="flex flex-col md:flex-row h-full w-full">
+         <Header />
+         <div className="flex flex-grow">
+            <main className="flex-grow flex-1">{children}</main>
+            <aside className="hidden md:block flex-grow">
+               <h1>Hello Aside Part</h1>
+            </aside>
+         </div>
+         <Footer />
+      </div>
    );
 }

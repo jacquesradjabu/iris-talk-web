@@ -14,22 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ReactNode } from "react"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer";
-
-
-export default function Layout({ children }: { children: ReactNode }) {
-   return (
-      <div className="flex flex-col md:flex-row h-full w-full">
-         <Header />
-         <div className="flex flex-grow">
-            <main className="flex-grow flex-1">{children}</main>
-            <aside className="hidden md:block flex-grows">
-               <h1>Hello Aside Part</h1>
-            </aside>
-         </div>
-         <Footer />
-      </div>
-   );
+type ButtonProps = {
+    title: string;
+    classes?: string;
+}
+export default function Button({ title, classes }: ButtonProps) {
+    return (
+        <button
+            className={`hover:opacity-85 flex items-center h-10 pl-4 justify-center pr-6 gap-2 rounded-md ${classes}`}>
+            <p className='font-bold text-medium'>{title}</p>
+        </button>
+    );
 }

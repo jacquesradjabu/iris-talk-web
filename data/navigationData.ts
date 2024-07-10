@@ -1,4 +1,4 @@
-import { INavItemProps } from '@/@types/global';
+import { INavItemProps } from '@/types/global';
 import { AiFillSetting } from 'react-icons/ai';
 import { FaInbox, FaSearch, FaUserCircle, FaUserFriends } from 'react-icons/fa';
 

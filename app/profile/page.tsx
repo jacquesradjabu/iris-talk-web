@@ -1,32 +1,36 @@
-/*
-MIT License
+import Button from "@/components/Button"
+import ChatBox from "@/components/ChatBox"
+import ContactCard from "@/components/ContactCard"
+import InnerNavigation from "@/components/InnerNavigation"
+import images from "@/constants/images"
+import Image from "next/image"
 
-Copyright (c) 2024 Birusha Ndegeya and Contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
-
-export default function Profile(){
+export default function Profile() {
    return (
       <div>
-         <h1>Profile Screen</h1>
+         <InnerNavigation />
+         <ChatBox />
+         <div className="bg-red-500 container flex flex-col items-center p-3 ">
+            <div className="flex justify-between items-center gap-3">
+               <Image src={images.user1} alt="user image" className="h-20 w-20 rounded-full" />
+               <Button title="Edit" />
+               <Button title="Delete" />
+               <Button title="Follow" />
+            </div>
+            <h1>Profile Screen</h1>
+            <p>description</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum, modi laudantium, laborum quasi et vel provident perspiciatis placeat quis deserunt libero neque eum? Excepturi doloribus similique est iusto ipsam iure.</p>
+         </div>
+         <nav className="flex justify-between">
+            <h1>Followers</h1>
+            <h2>Following</h2>
+         </nav>
+         <div>
+            <ContactCard name={'Birusha'} description="Typescript developer" />
+            <ContactCard name="Tutka" description="Backend developer" />
+            <ContactCard name="Ezmuk" description="Frontend developer" />
+            <ContactCard name="William" description="Project developer" />
+         </div>
       </div>
    )
 }

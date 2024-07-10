@@ -7,7 +7,7 @@ import {
 } from 'react-icons/ai';
 import { FaInbox, FaSearch, FaUser, FaUserCircle, FaUserFriends } from 'react-icons/fa';
 import { } from 'react-icons/lib';
-import { INavItemProps } from "@/@types/global";
+import { INavItemProps } from "@/types/global";
 
 
 export default function NavItem({ url, icon }: INavItemProps): JSX.Element {
