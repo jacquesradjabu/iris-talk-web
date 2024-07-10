@@ -17,7 +17,7 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Layout from '@/layout/Layout'
+import Header from "@/components/Header";
 import "./index.css";
 
 
@@ -36,7 +36,10 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
    return (
       <html lang="en">
          <body className={inter.className}>
-            <Layout>{children}</Layout>
+            <Header />
+            <main>
+               {children}
+            </main>
          </body>
       </html>
    );

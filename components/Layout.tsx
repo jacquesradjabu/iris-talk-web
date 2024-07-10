@@ -14,13 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Link from "next/link";
-export default function Logo() {
+import { ReactNode } from "react"
+import Header from "@/components/Header"
+import Footer from "@/components/Footer";
+
+
+export default function Layout({ children }: { children: ReactNode }) {
    return (
-      <Link href={'/'}>
-         <div className="h-10 bg-blue-400 rounded-md w-10 text-gray-50 flex items-center justify-center hover:bg-blue-500">
-            <p className="font-medium text-[20px]">InB</p>
+      <div className="flex flex-col md:flex-row h-full w-full">
+         <Header />
+         <div className="flex flex-grow">
+            <main className="flex-grow flex-1">{children}</main>
+            <aside className="hidden md:block flex-grow">
+               <h1>Hello Aside Part</h1>
+            </aside>
          </div>
-      </Link>
+         <Footer />
+      </div>
    );
 }

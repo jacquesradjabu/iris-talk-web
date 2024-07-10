@@ -14,13 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Link from "next/link";
-export default function Logo() {
-   return (
-      <Link href={'/'}>
-         <div className="h-10 bg-blue-400 rounded-md w-10 text-gray-50 flex items-center justify-center hover:bg-blue-500">
-            <p className="font-medium text-[20px]">InB</p>
-         </div>
-      </Link>
-   );
+import { FaSearch } from 'react-icons/fa';
+export default function SearchBar() {
+    return (
+        <div className="bg-gray-200 m-3 flex p-2 rounded-md px-4">
+            <input
+                type="search"
+                placeholder="search a friend"
+                className='flex-1 bg-transparent outline-none'
+            />
+            <button>
+                <FaSearch size={24} color='#999' />
+            </button>
+        </div>
+    );
 }
