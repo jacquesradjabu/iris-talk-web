@@ -20,7 +20,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ToastsContainer, ToastsStore } from 'react-toasts';
 import axios from 'axios';
-import navigate from "@/utils/navigate";
+import { useRouter } from "next/navigation";
 // import { useRouter } from "next/router/navigation";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -30,7 +30,7 @@ type Inputs = {
    password: string
 }
 export default function Login() {
-   // const router = useRouter();
+   const router = useRouter();
    const [message, setMessage] = useState('');
    const [error, setError] = useState('');
    const {
@@ -54,8 +54,7 @@ export default function Login() {
             }
             ToastsStore.success(data.message);
             // window.location.href = '/';
-            // router.push('/profile');
-            navigate('/profile');
+            // router.push('/home');
             console.log(data.token);
             reset();
          })

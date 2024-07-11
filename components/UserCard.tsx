@@ -21,7 +21,7 @@ type ContactCardProps = {
     avatar?: string;
     description?: string;
 }
-export default function ContactCard({ name, avatar, description }: ContactCardProps) {
+export default function UserCard({ name, avatar, description }: ContactCardProps) {
     return (
         <div className="flex items-center justify-between h-20 hover:bg-gray-200 hover:cursor-pointer p-3 rounded-md">
             <div className="flex gap-4 items-start">

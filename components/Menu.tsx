@@ -4,18 +4,14 @@ import {
     AiOutlineClose
 } from 'react-icons/ai';
 
-export default function Menu() {
-    const [showMenu, setShowMenu] = useState(true);
-    const handleClick = () => {
-        setShowMenu(!showMenu);
-    }
+export default function Menu({ handleClick, showMenu }: { handleClick: () => void | any; showMenu: boolean }) {
     return (
-        <div onClick={handleClick} className='md:hidden'>
+        <div onClick={handleClick} className='md:hidden cursor-pointer'>
             {
                 showMenu ? (
-                    <AiOutlineMenu className='transition-all' />
+                    <AiOutlineClose size={40} color='#333' className='hover:fill-blue-400 transition-colors' />
                 ) : (
-                    <AiOutlineClose />
+                    <AiOutlineMenu size={40} color='#333' className='hover:fill-blue-400 transition-colors' />
                 )
             }
         </div>

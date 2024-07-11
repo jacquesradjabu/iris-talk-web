@@ -1,13 +1,4 @@
-type InputProps = {
-    type: string;
-    placeholder: string;
-    classes?: string;
-    register: any
-    name: string;
-    message?: string;
-}
-
-export default function Input({ type, placeholder, classes, register, name, message }: InputProps) {
+export default function Input({ type, placeholder, classes, register, name, message }: IinputProps) {
     return (
         <input
             type={`${type}`}

@@ -17,10 +17,12 @@
 type ButtonProps = {
     title: string;
     classes?: string;
+    handleClick?: () => void | any;
 }
-export default function Button({ title, classes }: ButtonProps) {
+export default function Button({ title, classes, handleClick }: ButtonProps) {
     return (
         <button
+            onClick={handleClick}
             className={`hover:opacity-85 flex items-center h-10 pl-6 justify-center pr-6 rounded-md ${classes}`}>
             <p className='text-medium'>{title}</p>
         </button>

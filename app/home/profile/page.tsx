@@ -1,7 +1,10 @@
 "use client";
 import { useState } from 'react';
-import Image from 'next/image';
 import { EditProfileModal, ListModal } from '@/components/Modals';
+import colors from '@/constants/colors';
+import Avatar from '@/components/Avatar';
+console.log(colors.primary);
+console.log(colors.hover);
 
 export default function Profile() {
    const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -16,40 +19,6 @@ export default function Profile() {
       followers: [
          { name: 'Jane Smith', description: 'Graphic Designer' },
          { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
-         { name: 'Jane Smith', description: 'Graphic Designer' },
          // Add more followers
       ],
       following: [
@@ -59,22 +28,19 @@ export default function Profile() {
    };
 
    return (
-      <div className="max-w-4xl mx-auto p-4">
+      <div className="">
          <div className="flex flex-col items-center">
-            <div className="relative w-24 h-24 rounded-full bg-gray-300 overflow-hidden">
-               {user.avatarUrl ? (
-                  <Image src={user.avatarUrl} alt="Avatar" layout="fill" />
-               ) : (
-                  <span className="text-3xl font-semibold flex items-center justify-center w-full h-full">
-                     {user.name.charAt(0)}
-                  </span>
-               )}
-            </div>
+            <Avatar
+               avatarURL={user.avatarUrl}
+               name={user.name}
+            />
             <h1 className="text-2xl font-semibold mt-4">{user.name}</h1>
             <p className="text-gray-500">{user.email}</p>
             <p className="text-center mt-2">{user.description}</p>
+
+
             <button
-               className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+               className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
                onClick={() => setEditModalOpen(true)}
             >
                Edit Profile

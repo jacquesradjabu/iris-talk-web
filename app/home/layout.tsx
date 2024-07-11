@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
       <html lang="en">
          <body className={`${inter.className} min-h-screen overflow-hidden`}>
             <Header />
-            <main className="flex flex-col lg:flex-row container">
+            <main className="flex containerj">
                <Footer />
                <div className="flex-1 overflow-scroll">
                   {children}
