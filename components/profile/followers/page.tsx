@@ -1,6 +1,6 @@
 import Button from "@/components/Button"
 import ChatBox from "@/components/ChatBox"
-import ContactCard from "@/components/ContactCard"
+import ContactCard from "@/components/UserCard"
 import InnerNavigation from "@/components/InnerNavigation"
 import ProfilePage from "@/components/profile/ProfilePage"
 import images from "@/constants/images"

@@ -1,7 +1,8 @@
-import { IconType } from "react-icons/lib";
-
-interface INavItemProps {
-   icon: IconType;
-   url: string;
+interface IinputProps {
+   type: string;
+   placeholder: string;
+   classes?: string;
+   register: any
    name: string;
+   message?: string;
 }

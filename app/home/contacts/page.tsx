@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ContactCard from "@/components/ContactCard"
-import SearchBar from "@/components/SearchBar"
+import ContactCard from "@/components/UserCard"
+import SearchBar from "@/components/SearchBar";
+import { data } from "@/data/message";
+import Link from "next/link";
 export default function Contacts() {
    return (
       <div className="container p-3">
          <SearchBar />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
-         <ContactCard name={'Birusha'} avatar="" description="Full stack web developer" />
+         {
+            data.map((contact, index) => (
+               <Link key={index} href={`/home/profile/${contact.name}`}>
+                  <ContactCard name={contact.name} avatar={contact.avatar} description={contact.description} />
+               </Link>
+            ))
+         }
       </div>
    )
 }
