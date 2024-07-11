@@ -10,7 +10,7 @@ export default function Navigation({
 }) {
     return (
         <nav className={`flex gap-6 ${classes}`}>
-            <Link href={'/home'} className="">
+            <Link href={'/home'} className={``}>
                 <p className="hover:text-blue-400 transition-colors">Messages</p>
             </Link>
             <Link href={'/home/contacts'} className="">

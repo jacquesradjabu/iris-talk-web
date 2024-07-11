@@ -23,7 +23,7 @@ export default function Header() {
    }
    return (
       <header className="bg-white p-3 shadow-sm border-b border-gray-200 text-slate-800 sticky top-0">
-         <div className="container md:px-6 flex items-center justify-between">
+         <div className="container flex items-center justify-between">
             <Logo />
             <Navigation classes="hidden md:flex" />
             <Menu handleClick={showMenu} showMenu={isMenuOpen} />
