@@ -25,7 +25,7 @@ export default function ProfileId({ params }: {
     return (
         <div className="">
             <Navbar path="/home/contacts" />
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mt-2">
                 <Avatar
                     avatarURL={user.avatarUrl}
                     name={params.profileId}

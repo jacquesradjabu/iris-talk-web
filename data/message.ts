@@ -133,55 +133,5 @@ export const data: {
             name: "Tutka",
             avatar: '',
             messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
-        },
-        {
-            name: "Tutka",
-            avatar: '',
-            messages: ['Hey there', 'I love python is awesome']
         }
     ]

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { EditProfileModal, ListModal } from '@/components/Modals';
 import colors from '@/constants/colors';
 import Avatar from '@/components/Avatar';
+import Navbar from '@/components/Navbar';
 console.log(colors.primary);
 console.log(colors.hover);
 
@@ -28,7 +29,7 @@ export default function Profile() {
    };
 
    return (
-      <div className="">
+      <div className="mt-2">
          <div className="flex flex-col items-center">
             <Avatar
                avatarURL={user.avatarUrl}

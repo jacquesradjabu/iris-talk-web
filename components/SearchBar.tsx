@@ -24,7 +24,7 @@ export default function SearchBar() {
                 className='flex-1 bg-transparent outline-none'
             />
             <button>
-                <FaSearch size={24} color='#999' />
+                <FaSearch size={18} color='#999' />
             </button>
         </div>
     );

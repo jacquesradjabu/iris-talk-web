@@ -1,6 +1,6 @@
 export default function Footer() {
    return (
-      <aside className="hidden md:block pl-6 py-4 pr-4 w-96 border-r border-gray-200 text-sm overflow-scroll">
+      <aside className="hidden md:block py-4 pr-4 flex-2 border-r border-gray-200 text-sm overflow-scroll">
          <div className="mb-2">
             <h2 className="text-md font-bold mb-2">App Information</h2>
             <p className="text-sm text-gray-600">Learn more about our app features, user guides, and more.</p>

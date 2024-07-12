@@ -14,34 +14,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { ReactNode } from "react";
-import type { Metadata } from "next";
+"use client";
+import { ReactNode, useContext } from "react";
+import AuthProvider from "@/providers/AuthProvider";
+import { AuthContext } from "@/contexts/authContext";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
+import { useRouter } from "next/navigation";
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 type HomeLayoutProps = {
    children: ReactNode;
 }
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-   title: "home",
-   description: "inbox chat social media reseau social home page page d'acceuil",
-};
 
 export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
+   const router = useRouter()
+   const { isLogged } = useContext(AuthContext);
+   if (!isLogged) {
+      setTimeout(() => {
+         ToastsStore.warning('Please Login or register');
+      }, 2000);
+      router.push('/');
+   }
    return (
       <html lang="en">
-         <body className={`${inter.className} min-h-screen overflow-hidden`}>
-            <Header />
-            <main className="flex containerj">
-               <Footer />
-               <div className="flex-1 overflow-scroll">
-                  {children}
-               </div>
-            </main>
+         <body className={`${inter.className}`}>
+            <ToastsContainer store={ToastsStore} />
+            <AuthProvider>
+               <Header />
+               <main className="flex container">
+                  <Footer />
+                  <div className="flex-1 overflow-scroll">
+                     {children}
+                  </div>
+               </main>
+            </AuthProvider>
          </body>
       </html>
    );

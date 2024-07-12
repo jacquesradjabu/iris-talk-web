@@ -20,7 +20,7 @@ import { data } from "@/data/message";
 import Link from "next/link";
 export default function Contacts() {
    return (
-      <div className="container p-3">
+      <div className="">
          <SearchBar />
          {
             data.map((contact, index) => (

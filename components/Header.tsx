@@ -2,12 +2,14 @@
 import Menu from "./Menu";
 import Logo from "./Logo";
 import { ToastsContainer, ToastsStore } from "react-toasts";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "./Button";
 import { useRouter } from "next/navigation";
 import Navigation from "./Navigation";
+import { AuthContext } from "@/contexts/authContext";
 
 export default function Header() {
+   const { setIsLogged } = useContext(AuthContext);
    const router = useRouter();
    const [isMenuOpen, setIsMenuOpen] = useState(false);
    const showMenu = () => {
@@ -17,9 +19,10 @@ export default function Header() {
       // localStorage.removeItem('users');
 
       ToastsStore.warning('Logged out');
+      setIsLogged(false);
       setTimeout(() => {
          router.push('/');
-      }, 3000);
+      }, 2000);
    }
    return (
       <header className="bg-white p-3 shadow-sm border-b border-gray-200 text-slate-800 sticky top-0">
