@@ -42,7 +42,7 @@ export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
    return (
       <html lang="en">
          <body className={`${inter.className}`}>
-            <ToastsContainer store={ToastsStore} />
+            <ToastsContainer position={undefined} store={ToastsStore} />
             <AuthProvider>
                <Header />
                <main className="flex container">
