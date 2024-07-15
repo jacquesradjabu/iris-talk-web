@@ -14,11 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Chat from "@/components/Chat";
+import { createContext, useEffect, useState } from "react";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
+export const AuthContext = createContext();
 
-export default function Home() {
-   return (
-      <Chat />
-   );
-}
+export const AuthContextProvider = ({ children }) => {
+  return (
+    <AuthContext.Provider value={{ hello: 'string' }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};

@@ -1,10 +1,11 @@
 "use client";
 import { useState } from 'react';
 import { EditProfileModal, ListModal } from '@/components/Modals';
-import colors from '@/constants/colors';
+// import colors from '@/constants/colors';
 import Avatar from '@/components/Avatar';
-console.log(colors.primary);
-console.log(colors.hover);
+// import Navbar from '@/components/Navbar';
+// console.log(colors.primary);
+// console.log(colors.hover);
 
 export default function Profile() {
    const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function Profile() {
    };
 
    return (
-      <div className="">
+      <div className="h-full flex items-center justify-center">
          <div className="flex flex-col items-center">
             <Avatar
                avatarURL={user.avatarUrl}
@@ -46,7 +47,7 @@ export default function Profile() {
                Edit Profile
             </button>
             <div className="flex space-x-4 mt-4">
-               <button
+               {/* <button
                   className="px-4 py-2 bg-gray-200 rounded"
                   onClick={() => setFollowersModalOpen(true)}
                >
@@ -57,12 +58,12 @@ export default function Profile() {
                   onClick={() => setFollowingModalOpen(true)}
                >
                   Following
-               </button>
+               </button> */}
             </div>
          </div>
          <EditProfileModal isOpen={isEditModalOpen} onClose={() => setEditModalOpen(false)} user={user} />
-         <ListModal isOpen={isFollowersModalOpen} onClose={() => setFollowersModalOpen(false)} title="Followers" list={user.followers} />
-         <ListModal isOpen={isFollowingModalOpen} onClose={() => setFollowingModalOpen(false)} title="Following" list={user.following} />
+         {/* <ListModal isOpen={isFollowersModalOpen} onClose={() => setFollowersModalOpen(false)} title="Followers" list={user.followers} /> */}
+         {/* <ListModal isOpen={isFollowingModalOpen} onClose={() => setFollowingModalOpen(false)} title="Following" list={user.following} /> */}
       </div>
    );
 };

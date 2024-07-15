@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import Link from 'next/link';
-import Input from '@/components/Input';
+import Input from '@/components/shared/Input';
 import Button from '@/components/Button';
 const url = 'http://localhost:8000/register';
 type Inputs = {
@@ -48,7 +48,7 @@ export default function Register() {
       <div className="flex items-center justify-center min-h-screen mx-auto">
          <form
             onSubmit={handleSubmit(onSubmit)}
-            className='p-6  w-full max-w-sm md:border md:border-gray-100'>
+            className='p-6  w-full max-w-sm md:border md:border-gray-200 md:shadow-md md:rounded-md'>
             <h1 className="my-4 text-xl font-bold text-center text-slate-800">Create your account</h1>
             <div className='mb-4'>
                <Input
@@ -78,17 +78,18 @@ export default function Register() {
                <Input
                   type="password"
                   placeholder="Confirm Password"
-                  name="confirmPassword" register={register}
+                  name="confirmPassword"
+                  register={register}
                   message="Password does not match"
                />
             </div>
             <Button
                title="REGISTER"
-               classes="w-full mb-4 bg-[#8098F9] text-gray-100"
+               className="w-full mb-4 bg-[#8098F9] text-gray-100"
             />
 
             <div className="text-center text-sm">
-               <span className="text-[#71717A]">You have account?</span> <Link href="/" className="text-[#8098F9] hover:underline font-bold">Login now</Link>
+               <span className="text-[#71717A]">You have account?</span> <Link href="/" className="text-[#8098F9] font-medium hover:underline">Login now</Link>
             </div>
          </form>
       </div>

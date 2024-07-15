@@ -14,16 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-type ButtonProps = {
-    title: string;
-    classes?: string;
-    handleClick?: () => void | any;
-}
-export default function Button({ title, classes, handleClick }: ButtonProps) {
+export default function Button({ title, className, handleClick, type }: IButtonProps) {
     return (
         <button
+            type={type}
             onClick={handleClick}
-            className={`hover:opacity-85 flex items-center h-10 pl-6 justify-center pr-6 rounded-md ${classes}`}>
+            className={`hover:opacity-85 flex items-center h-10 pl-6 justify-center pr-6 rounded-md ${className}`}
+        >
             <p className='text-medium'>{title}</p>
         </button>
     );

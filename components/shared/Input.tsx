@@ -14,18 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FaSearch } from 'react-icons/fa';
-export default function SearchBar() {
-    return (
-        <div className="bg-gray-200 m-3 flex p-2 rounded-md px-4">
-            <input
-                type="search"
-                placeholder="search a friend"
-                className='flex-1 bg-transparent outline-none'
-            />
-            <button>
-                <FaSearch size={24} color='#999' />
-            </button>
-        </div>
-    );
+export default function Input({ type, placeholder, classes, register, name, message }: IInputProps) {
+   return (
+      <input
+         type={`${type}`}
+         placeholder={`${placeholder}`}
+         className={`bg-[#e9edff] text-[#71717A] rounded-md w-full px-3 py-2 border outline-none ${classes}`}
+         {...register(`${name}`, { required: `${message}` })}
+      />
+   );
 }

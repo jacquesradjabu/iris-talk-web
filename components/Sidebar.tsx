@@ -14,11 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Chat from "@/components/Chat";
+import Navbar from "./Navbar"
+import Search from "./Search";
+import Chats from "./Chats";
 
-
-export default function Home() {
-   return (
-      <Chat />
-   );
-}
+export default function Sidebar () {
+  return (
+    <div className="border-r border-gray-200 overflow-hidden w-full md:w-[460px]">
+      <Navbar />
+      <Search/>
+      <Chats/>
+    </div>
+  );
+};

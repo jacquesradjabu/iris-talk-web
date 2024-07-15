@@ -14,21 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ContactCard from "@/components/UserCard"
-import SearchBar from "@/components/SearchBar";
-import { data } from "@/data/message";
-import Link from "next/link";
-export default function Contacts() {
+'use client';
+import { useState } from "react";
+
+export default function Chats() {
+   const [chats, setChats] = useState([]);
    return (
-      <div className="container p-3">
-         <SearchBar />
-         {
-            data.map((contact, index) => (
-               <Link key={index} href={`/home/profile/${contact.name}`}>
-                  <ContactCard name={contact.name} avatar={contact.avatar} description={contact.description} />
-               </Link>
-            ))
-         }
+      <div className="">
+         {/* {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+        <div
+          className="userChat"
+          key={chat[0]}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
+          <img src={chat[1].userInfo.photoURL} alt="" />
+          <div className="userChatInfo">
+            <span>{chat[1].userInfo.displayName}</span>
+            <p>{chat[1].lastMessage?.text}</p>
+          </div>
+        </div>
+      ))} */}
       </div>
-   )
-}
+   );
+};
