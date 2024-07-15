@@ -14,13 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Link from "next/link";
-export default function Logo() {
+import images from "@/constants/images";
+import Messages from './Messages';
+import Image from "next/image";
+import Input from "./Input";
+
+export default function Chat() {
    return (
-      <Link href={'/home'}>
-         <div className="h-10 bg-blue-400 rounded-md w-10 text-gray-50 flex items-center justify-center hover:bg-blue-500">
-            <p className="font-medium text-[20px]">InB</p>
+      <div className="h-screen overflow-hidden">
+         <div className="h-14 flex items-center justify-between border-b border-gray-200 sticky top-0 bg-white">
+            <span>{"Birusha Ndegeya"}</span>
+            <div className="flex gap-3">
+               <Image src={images.cam} alt="image" />
+               <Image src={images.add} alt="image" />
+               <Image src={images.more} alt="images" />
+            </div>
          </div>
-      </Link>
+         <Messages />
+         <Input />
+      </div>
    );
-}
+};

@@ -22,14 +22,15 @@ import { ToastsContainer, ToastsStore } from 'react-toasts';
 import axios from 'axios';
 import { useRouter } from "next/navigation";
 // import { useRouter } from "next/router/navigation";
-import Input from "@/components/Input";
+// import Input from "@/components/profile/Input";
+import Input from '@/components/shared/Input';
 import Button from "@/components/Button";
 const url = 'http://localhost:8000/login';
 type Inputs = {
    name: string
    password: string
 }
-export default function Login() {
+export default function SignUp() {
    const router = useRouter();
    const [message, setMessage] = useState('');
    const [error, setError] = useState('');
@@ -61,10 +62,11 @@ export default function Login() {
          .catch((err) => ToastsStore.error(err.message));
    }
    return (
-      <div className="flex items-center justify-center min-h-screen mx-auto">
-         <ToastsContainer store={ToastsStore} lightBackground/>
-         <form onSubmit={handleSubmit(onSubmit)} className="p-6  w-full max-w-sm md:border md:border-gray-100">
-            <h1 className="my-4 text-xl font-bold text-center text-slate-800">Login into your account</h1>
+      <div className="h-screen flex items-center justify-center min-h-screen mx-auto">
+         <ToastsContainer store={ToastsStore} lightBackground />
+         <form onSubmit={handleSubmit(onSubmit)} className="p-6 w-full max-w-sm md:border md:border-gray-200 md:shadow-md md:rounded-md">
+            <h1 className="my-4 text-3xl font-bold text-center text-[#8098F9]">INBOX</h1>
+            <h1 className="my-5 text-xl font-bold text-center text-slate-800">Login into your account</h1>
             <div className="mb-4">
                <Input
                   type="name"
@@ -88,12 +90,12 @@ export default function Login() {
             </div>
 
             <Button
-               title="LOG IN"
-               classes="w-full mb-4 bg-[#8098F9] text-gray-100"
+               title="SIGN IN"
+               className="w-full mb-4 bg-[#8098F9] text-gray-100"
             />
 
             <div className="text-center text-sm">
-               <span className="text-[#71717A]">Don't have an account?</span> <Link href="/register" className="text-[#8098F9] hover:underline font-bold">Create an account</Link>
+               <span className="text-[#71717A]">Don't have an account?</span> <Link href="/register" className="text-[#8098F9] font-medium hover:underline">Create an account</Link>
             </div>
          </form>
       </div>

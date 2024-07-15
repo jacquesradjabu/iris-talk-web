@@ -9,9 +9,9 @@ export default function Menu({ handleClick, showMenu }: { handleClick: () => voi
         <div onClick={handleClick} className='md:hidden cursor-pointer'>
             {
                 showMenu ? (
-                    <AiOutlineClose size={40} color='#333' className='hover:fill-blue-400 transition-colors' />
+                    <AiOutlineClose size={32} color='#333' className='hover:fill-blue-400 transition-colors' />
                 ) : (
-                    <AiOutlineMenu size={40} color='#333' className='hover:fill-blue-400 transition-colors' />
+                    <AiOutlineMenu size={32} color='#333' className='hover:fill-blue-400 transition-colors' />
                 )
             }
         </div>

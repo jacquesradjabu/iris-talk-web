@@ -16,32 +16,27 @@
  */
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-
+import Sidebar from "@/components/Sidebar";
 type HomeLayoutProps = {
    children: ReactNode;
 }
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
    title: "home",
    description: "inbox chat social media reseau social home page page d'acceuil",
 };
 
+
 export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
    return (
       <html lang="en">
-         <body className={`${inter.className} min-h-screen overflow-hidden`}>
-            <Header />
-            <main className="flex containerj">
-               <Footer />
-               <div className="flex-1 overflow-scroll">
+         <body className={`h-screen flex items-center justify-center`}>
+            <div className="border border-gray-200 w-[100%] h-[100%] flex overflow-hidden">
+               <Sidebar />
+               <div className="flex-1 hidden md:block">
                   {children}
                </div>
-            </main>
+            </div>
          </body>
       </html>
    );

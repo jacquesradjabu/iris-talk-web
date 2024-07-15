@@ -14,18 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FaSearch } from 'react-icons/fa';
-export default function SearchBar() {
-    return (
-        <div className="bg-gray-200 m-3 flex p-2 rounded-md px-4">
-            <input
-                type="search"
-                placeholder="search a friend"
-                className='flex-1 bg-transparent outline-none'
-            />
-            <button>
-                <FaSearch size={24} color='#999' />
-            </button>
-        </div>
-    );
+import ContactCard from "@/components/UserCard"
+import SearchBar from "@/components/SearchBar";
+import { data } from "@/data/message";
+import Link from "next/link";
+export default function Contacts() {
+   return (
+      <div className="">
+         <SearchBar />
+         {
+            data.map((contact, index) => (
+               <Link key={index} href={`/home/profile/${contact.name}`}>
+                  <ContactCard name={contact.name} avatar={contact.avatar} description={contact.description} />
+               </Link>
+            ))
+         }
+      </div>
+   )
 }

@@ -16,20 +16,16 @@
  */
 import Image from "next/image";
 import Button from "./Button";
-type ContactCardProps = {
-    name?: string | any;
-    avatar?: string;
-    description?: string;
-}
-export default function UserCard({ name, avatar, description }: ContactCardProps) {
+
+export default function UserCard({ name, avatar, description }: IContactCardProps) {
     return (
-        <div className="flex items-center justify-between h-20 hover:bg-gray-200 hover:cursor-pointer p-3 rounded-md">
-            <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-blue-400 flex items-center justify-center">
+        <div className="flex h-20 hover:bg-gray-200 hover:cursor-pointer p-3 border-b border-gray-200">
+            <div className="flex justify-between">
+                <div className="w-10 h-10 rounded-full overflow-hidden bg-blue-400 flex items-center justify-center">
                     {avatar ? (
                         <Image src={`${avatar}`} alt="Avatar" className="object-cover" />
                     ) : (
-                        <div className="text-gray-50 text-lg font-bold">
+                        <div className="text-gray-50 text-md font-medium">
                             {name?.charAt(0).toUpperCase()}
                         </div>
                     )}
@@ -39,7 +35,6 @@ export default function UserCard({ name, avatar, description }: ContactCardProps
                     <p className="text-gray-500 text-sm">{description}</p>
                 </div>
             </div>
-            <Button title="follow" />
         </div>
     )
 }

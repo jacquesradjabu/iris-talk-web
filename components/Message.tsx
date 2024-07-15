@@ -1,6 +1,5 @@
-import Avatar from './Avatar';
 import Image from 'next/image';
-import images from '@/constants/images';
+
 
 export default function Message({
    name,
@@ -25,6 +24,7 @@ export default function Message({
             </div>
             <div>
                <p className="font-medium text-md text-gray-800">{name}</p>
+               {/* warning when a message is to long give it ... */}
                <p className="text-gray-500 text-sm">{message}</p>
             </div>
          </div>

@@ -13,10 +13,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * @public
- * CHECK IF EMAIL IS VALID
  */
-export default function isValidEmail(email: string): boolean {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-};
+import { FaSearch } from 'react-icons/fa';
+export default function SearchBar() {
+    return (
+        <div className="bg-gray-200 m-3 flex p-2 rounded-md px-4">
+            <input
+                type="search"
+                placeholder="search a friend"
+                className='flex-1 bg-transparent outline-none'
+            />
+            <button>
+                <FaSearch size={18} color='#999' />
+            </button>
+        </div>
+    );
+}
