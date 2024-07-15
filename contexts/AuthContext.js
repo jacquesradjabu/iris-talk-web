@@ -14,16 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
-
-export const AuthContext = createContext();
-
-export const AuthContextProvider = ({ children }) => {
-  return (
-    <AuthContext.Provider value={{ hello: 'string' }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
+import ContactCard from "@/components/UserCard"
+import SearchBar from "@/components/SearchBar";
+import { data } from "@/data/message";
+import Link from "next/link";
+export default function Contacts() {
+   return (
+      <div className="">
+         <SearchBar />
+         {
+            data.map((contact, index) => (
+               <Link key={index} href={`/home/profile/${contact.name}`}>
+                  <ContactCard name={contact.name} avatar={contact.avatar} description={contact.description} />
+               </Link>
+            ))
+         }
+      </div>
+   )
+}

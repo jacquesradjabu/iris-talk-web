@@ -4,8 +4,8 @@ import { Dispatch, SetStateAction, useState } from 'react';
 
 
 interface ModalProps {
-   isOpen?: boolean;
-   onClose: () => void | null;
+   isOpen: boolean;
+   onClose: () => void;
 }
 
 interface EditProfileModalProps extends ModalProps {
@@ -13,12 +13,12 @@ interface EditProfileModalProps extends ModalProps {
 }
 
 export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onClose, user }) => {
-   const { register, handleSubmit } = useForm();
-   const [name, setName] = useState(user.userName);
-   const [email, setEmail] = useState(user.userEmail);
-   const [description, setDescription] = useState(user.description);
-   const [avatarUrl, setAvatarUrl] = useState(user.avatarUrl);
-
+   // const { register, handleSubmit } = useForm();
+   // const [name, setName] = useState(user.name);
+   // const [email, setEmail] = useState(user.email);
+   // const [description, setDescription] = useState(user.description);
+   // const [avatarUrl, setAvatarUrl] = useState(user.avatarUrl);
+   const { register, handleSubmit} = useForm();
    const onSubmit = (data: any) => {
       alert(data.name);
    }

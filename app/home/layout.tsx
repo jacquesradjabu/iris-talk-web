@@ -17,7 +17,6 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import Sidebar from "@/components/Sidebar";
-
 type HomeLayoutProps = {
    children: ReactNode;
 }
@@ -26,6 +25,7 @@ export const metadata: Metadata = {
    title: "home",
    description: "inbox chat social media reseau social home page page d'acceuil",
 };
+
 
 export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
    return (

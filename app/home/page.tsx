@@ -1,24 +1,26 @@
-/**
- * @license
- * Copyright 2024 Birusha Ndegeya, sofia and Contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-import Chat from "@/components/Chat";
+'use client';
+import { useContext } from "react";
+import Message from "@/components/Message";
+// import SearchBar from "@/components/SearchBar";
+import { data } from "@/data/message";
+import Link from "next/link";
 
 
 export default function Home() {
    return (
-      <Chat />
+
+      <div className="">
+         {/* <SearchBar /> */}
+         <div className="flex p-3 flex-col gap-3 overflow-scroll">
+            {
+               data.map((item, i) => (
+                  <Link key={i} href={`/home/${item.name}`}>
+                     <Message name={item.name} message={item.messages.reverse()[0]} avatar={item.avatar} />
+                  </Link>
+               ))
+            }
+         </div>
+      </div>
+
    );
 }

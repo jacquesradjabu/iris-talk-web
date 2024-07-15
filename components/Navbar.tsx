@@ -24,30 +24,20 @@ import Button from "./Button";
 // import { AuthContext } from '../context/AuthContext'
 import images from "@/constants/images"
 import Link from "next/link";
-const Navbar = () => {
-   const router = useRouter();
-   const goToLogin = () => {
-      router.push('/');
-   };
-   //   const {currentUser} = useContext(AuthContext)
+import { FaArrowLeft } from 'react-icons/fa';
 
+export default function Navbar({ path }: { path: string; }) {
    return (
-      <div className='flex items-center bg-white h-14 p-3 justify-between text-slate-800 border-b border-gray-200 sticky top-0'>
-         <Link href={'/home'}><span className="font-bold text-xl text-blue-400">Inbox</span></Link>
-         <div className="flex gap-3 items-center">
-            <Link href={'/home/profile'} className="flex gap-3 items-center">
-               <Image
-                  src={images.user1}
-                  alt="avatar"
-                  className="bg-[#ddddf7] h-6 w-6 rounded-full object-cover"
-               />
-               <span className="hover:text-blue-400 transition-colors">{'Birusha'}</span>
-            </Link>
-            {/* <button onClick={()=>signOut(auth)}>logout</button> */}
-            <Button title="Logout" className="p-0 hover:text-[#8098F9] transition-colors" handleClick={goToLogin} />
-         </div>
-      </div>
-   )
+      <nav className="p-4 border-b border-gray-200">
+         <Link href={`${path}`} className="text-lg font-bold">
+            <FaArrowLeft
+               color="#333"
+               className="hover:fill-[#8098F9] transition-colors"
+               size={24}
+            />
+         </Link>
+         {/* <button onClick={()=>signOut(auth)}>logout</button> */}
+         {/* <Button title="Logout" className="p-0 hover:text-[#8098F9] transition-colors" handleClick={goToLogin} /> */}
+      </nav>
+   );
 }
-
-export default Navbar
