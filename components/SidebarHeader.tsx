@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useEffect } from "react";
 import { ToastsContainer, ToastsStore } from 'react-toasts';
 import Button from "./Button";
 import Link from "next/link";
@@ -7,11 +8,15 @@ import { useRouter } from "next/navigation";
 export default function SidebarHeader({ avatarURL, userName = 'Birusha' }: { avatarURL: string, userName: string }) {
    const router = useRouter();
    // bg-[#8098F9]
-   const signout = () => {
+   const useSignout = () => {
       ToastsStore.info('signout successfully');
-      setTimeout(() => {
-         router.push('/');
-      }, 3000);
+      useEffect(() => {
+         if (typeof window !== 'undefined') {
+            setTimeout(() => {
+               router.push('/');
+            }, 3000);
+         }
+      }, []);
    }
    return (
       <header className="p-4 border-b border-gray-300 flex justify-between items-center">
@@ -36,7 +41,7 @@ export default function SidebarHeader({ avatarURL, userName = 'Birusha' }: { ava
             <Button
                title="Signout"
                className="bg-red-400"
-               handleClick={signout}
+               handleClick={useSignout}
             />
          </div>
       </header>
