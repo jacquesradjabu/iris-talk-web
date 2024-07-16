@@ -1,9 +1,9 @@
 interface IInputProps {
-   type: string;
-   placeholder: string;
-   classes?: string;
+   type?: string;
+   label: string;
+   placeholder?: string;
    register: any
-   name: string;
+   refLabel?: string;
    message?: string;
 }
 
