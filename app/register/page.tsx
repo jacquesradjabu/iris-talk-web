@@ -15,83 +15,78 @@
  * limitations under the License.
  */
 "use client";
-import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import axios from 'axios';
-import Link from 'next/link';
-import Input from '@/components/shared/Input';
-import Button from '@/components/Button';
-const url = 'http://localhost:8000/register';
-type Inputs = {
-   email: string;
-   password: string;
-   name: string;
-}
-export default function Register() {
-   const [message, setMessage] = useState('');
-   const [error, setError] = useState('');
-   const { register, handleSubmit } = useForm<Inputs>();
-   const onSubmit: SubmitHandler<Inputs> = async (data: any) => {
-      try {
-         // Replace 'your-backend-url' with your actual backend URL
-         const response = await axios.post(url, data);
-         const result = response;
-         console.log(result);
-         // window.location.href = '/';
-         // Handle success (e.g., redirect, show success message)
-      } catch (error) {
-         console.error('Registration failed!', error);
-         // Handle error (e.g., show error message)
-      }
-   };
-   return (
-      <div className="flex items-center justify-center min-h-screen mx-auto">
-         <form
-            onSubmit={handleSubmit(onSubmit)}
-            className='p-6  w-full max-w-sm md:border md:border-gray-200 md:shadow-md md:rounded-md'>
-            <h1 className="my-4 text-xl font-bold text-center text-slate-800">Create your account</h1>
-            <div className='mb-4'>
-               <Input
-                  type="name"
-                  placeholder="Name"
-                  name="name" register={register}
-                  message="Name is required"
-               />
-            </div>
-            <div className='mb-4'>
-               <Input
-                  type="email"
-                  placeholder="Email"
-                  name="email" register={register}
-                  message="Email is required"
-               />
-            </div>
-            <div className="mb-4">
-               <Input
-                  type="password"
-                  placeholder="Password"
-                  name="email" register={register}
-                  message="Password is required"
-               />
-            </div>
-            <div className="mb-4">
-               <Input
-                  type="password"
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                  register={register}
-                  message="Password does not match"
-               />
-            </div>
-            <Button
-               title="REGISTER"
-               className="w-full mb-4 bg-[#8098F9] text-gray-100"
-            />
+import Image from "next/image";
+import Link from "next/link";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import { useForm } from 'react-hook-form';
 
-            <div className="text-center text-sm">
-               <span className="text-[#71717A]">You have account?</span> <Link href="/" className="text-[#8098F9] font-medium hover:underline">Login now</Link>
+
+export default function Register() {
+   const { register } = useForm();
+   return (
+      <section className="bg-gray-50">
+         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <Link href="/home" className="flex items-center mb-6 text-2xl font-semibold text-[#8098F9]">
+               {/* <Image className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" /> */}
+               Inbox
+            </Link>
+            <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                  <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-slate-800">
+                     Create an account
+                  </h1>
+                  <form className="space-y-4 md:space-y-6">
+
+                     <Input
+                        register={register}
+                        label="Email Address"
+                        type="email"
+                        refLabel="userEmail"
+                        placeholder="birushandegeya@gmail.com"
+                     />
+
+                     <Input
+                        register={register}
+                        label="User Name"
+                        type="text"
+                        refLabel="userName"
+                        placeholder="Birusha Ndegeya"
+                     />
+
+                     <Input
+                        register={register}
+                        label="Your Password"
+                        type="password"
+                        refLabel="userPassword"
+                        placeholder="********************************"
+                     />
+
+                     <div className="flex items-start">
+                        <div className="flex items-center h-5">
+                           <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required={true} />
+                        </div>
+                        <div className="ml-3 text-sm">
+                           <label htmlFor="terms" className="font-light text-slate-800">I accept the <a className="font-medium text-[#8098F9] hover:underline" href="#">Terms and Conditions</a></label>
+                        </div>
+                     </div>
+
+                     <div className="mt-6">
+                        <span className="block w-full rounded-md shadow-sm">
+                           <Button
+                              title="Create an account"
+                              className="bg-[#8098F9] w-full"
+                           />
+                        </span>
+                     </div>
+
+                     <p className="text-sm font-light text-slate-800">
+                        Already have an account? <Link href="/" className="font-medium text-[#8098F9] hover:underline">Login here</Link>
+                     </p>
+                  </form>
+               </div>
             </div>
-         </form>
-      </div>
+         </div>
+      </section>
    );
 }
