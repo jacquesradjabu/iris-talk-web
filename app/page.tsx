@@ -37,7 +37,7 @@ export default function Login() {
    return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
          <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            {/* <Image className="mx-auto h-10 w-auto w-10 h-10" src="https://www.svgrepo.com/show/301692/login.svg" alt="Workflow" /> */}
+            <img className="mx-auto h-10 w-auto w-10 h-10" src="https://www.svgrepo.com/show/301692/login.svg" alt="Workflow" />
             <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-slate-800">
                Sign in to your account
             </h2>

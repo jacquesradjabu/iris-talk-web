@@ -1,69 +1,28 @@
-import Avatar from "@/components/Avatar";
-// import Navbar from "@/components/Navbar";
-const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    description: 'Software developer and tech enthusiast.',
-    avatarUrl: '', // Add your avatar URL here
-    followers: [
-        { name: 'Jane Smith', description: 'Graphic Designer' },
-        { name: 'Jane Smith', description: 'Graphic Designer' },
-        // Add more followers
-    ],
-    following: [
-        { name: 'Paul Walker', description: 'Product Manager' },
-        // Add more following
-    ],
-};
-
-
-export default function ProfileId({ params }: {
-    params: {
-        profileId: string;
-    }
-}) {
+import Button from "@/components/Button";
+export default function ProfileId() {
     return (
-        <div className="flex-1 flex flex-col justify-center items-center">
-            {/* <Navbar path="/home/contacts" />
-            <div className="flex flex-col items-center mt-2">
-                <Avatar
-                    avatarURL={user.avatarUrl}
-                    name={params.profileId}
-                /> */}
-            <h1 className="text-2xl font-semibold mt-4">{params.profileId}</h1>
-            <p className="text-gray-500">{user.email}</p>
-            <p className="text-center mt-2">{user.description}</p>
+        <div className="flex-1 p-32 items-center justify-center">
 
-
-            <button
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
-            //    onClick={() => setEditModalOpen(true)}
-            >
-                FOLLOW
-            </button>
-            <div className="flex space-x-4 mt-4">
-                <button
-                    className="px-4 py-2 bg-gray-200 rounded"
-                //   onClick={() => setFollowersModalOpen(true)}
-                >
-                    Followers
-                </button>
-                <button
-                    className="px-4 py-2 bg-gray-200 rounded"
-                //   onClick={() => setFollowingModalOpen(true)}
-                >
-                    Following
-                </button>
+            {/* <!-- Card start --> */}
+            <div className="max-w-sm mx-auto rounded-lg overflow-hidden bg-gray-50 border border-gray-300 shadow-lg flex items-center justify-center">
+                <div className="px-4 pb-6">
+                    <div className="text-center my-4">
+                        <img className="h-32 w-32 rounded-full mx-auto my-4"
+                            src={`https://randomuser.me/api/portraits/women/21.jpg`} alt="" width={128} height={128} />
+                        <div className="py-2">
+                            <h3 className="font-bold text-2xl text-gray-800 mb-1">Cait Genevieve</h3>
+                            <div className="inline-flex text-gray-700 items-center">
+                                New York, NY Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                            </div>
+                        </div>
+                    </div>
+                    <Button
+                        className="bg-blue-400 hover:bg-blue-500 w-full"
+                        title="Send Message"
+                    />
+                </div>
             </div>
-            {/* <EditProfileModal isOpen={isEditModalOpen} onClose={() => setEditModalOpen(false)} user={user} />
-         <ListModal isOpen={isFollowersModalOpen} onClose={() => setFollowersModalOpen(false)} title="Followers" list={user.followers} />
-         <ListModal isOpen={isFollowingModalOpen} onClose={() => setFollowingModalOpen(false)} title="Following" list={user.following} /> */}
+            {/* <!-- Card end --> */}
         </div>
-
-
-
-
-
-
-    )
+    );
 }

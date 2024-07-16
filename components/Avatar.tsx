@@ -1,23 +1,7 @@
-import Image from "next/image"
-
-export default function Avatar({
-    avatarURL,
-    name,
-    classes
-}: {
-    avatarURL?: string | any;
-    name?: string | any;
-    classes?: string;
-}) {
+export default function Avatar() {
     return (
-        <div className={`w-24 h-24 rounded-full bg-[#8098F9] text-gray-50 overflow-hidden ${classes}`}>
-            {avatarURL ? (
-                <Image src={avatarURL} alt="Avatar" layout="fill" className={`w-24 h-24 ${classes}`} />
-            ) : (
-                <span className="text-3xl font-semibold flex items-center justify-center w-full h-full">
-                    {name.charAt(0)}
-                </span>
-            )}
+        <div className="relative w-10 h-10 overflow-hidden bg-gray-300 border border-gray-300 rounded-full">
+            <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
         </div>
     );
 }

@@ -1,6 +1,5 @@
-
 "use client";
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 interface User {
   name: string;
