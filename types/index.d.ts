@@ -5,33 +5,22 @@ interface IInputProps {
    register: any
    refLabel?: string;
    message?: string;
+   className?: string;
 }
-
-interface IUser {
-   followers: { name: string; description: string }[];
-   following: { name: string; description: string }[];
-}
-
 
 interface IAuthContext {
+   accessToken: string;
+   setAccessToken: Dispatch<SetStateAction<string>>;
    userName: string;
+   setUserName: Dispatch<SetStateAction<string>>;
    userEmail: string;
-   description?: string;
-   avatarUrl?: string;
-   accessToken: token;
+   setUserEmail: Dispatch<SetStateAction<string>>;
    userId: string;
-   creationDate: string;
-   updatedDate?: string;
-   isLogged: boolean;
-   status: string;
-   message: string;
-      userName: string;
-   userEmail: string;
-   description: string;
-   avatarUrl: string;
-   accessToken: token;
-   userId: string;
-   creationDate: string;
-   updatedDate: string;
-   setIsLogged: Dispatch<SetStateAction<boolean>>;
+   setUserId: Dispatch<SetStateAction<string>>;
+   created: string;
+   setCreated: Dispatch<SetStateAction<string>>;
+   userAvatarURL: string;
+   setUserAvatarURL: Dispatch<SetStateAction<string>>;
+   userDescription: string;
+   setUserDescription: Dispatch<SetStateAction<string>>;
 }

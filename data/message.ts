@@ -23,7 +23,7 @@ export const data: {
 }[] = [
         {
             name: "Tutka",
-            avatar: '',
+            avatar: null,
             messages: ['Hey there', 'I love python is awesome'],
             description: "Full stack developer and computer programmer"
         },

@@ -27,10 +27,7 @@ export default function Register() {
    return (
       <section className="bg-gray-50">
          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <Link href="/home" className="flex items-center mb-6 text-2xl font-semibold text-[#8098F9]">
-               {/* <Image className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" /> */}
-               Inbox
-            </Link>
+            <h1 className="mb-6 text-2xl font-semibold text-blue-400">Inbox</h1>
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
                <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-slate-800">
@@ -75,7 +72,7 @@ export default function Register() {
                         <span className="block w-full rounded-md shadow-sm">
                            <Button
                               title="Create an account"
-                              className="bg-[#8098F9] w-full"
+                              className="bg-blue-400 hover:bg-blue-500 w-full"
                            />
                         </span>
                      </div>
