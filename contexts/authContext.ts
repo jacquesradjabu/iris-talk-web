@@ -17,14 +17,18 @@
 import { createContext } from 'react';
 
 export const AuthContext = createContext<IAuthContext>({
-    isLogged: false || true,
-    status: '',
-    message: ``,
     accessToken: '',
+    setAccessToken: null,
     userName: '',
-    userId: '',
+    setUserName: null,
     userEmail: '',
-    creationDate: '',
-    updatedDate: '',
-    setIsLogged: null,
+    setUserEmail: null,
+    userId: '',
+    setUserId: null,
+    created: '',
+    setCreated: null,
+    userAvatarURL: '',
+    setUserAvatarURL: null,
+    userDescription: '',
+    setUserDescription: null,
 });

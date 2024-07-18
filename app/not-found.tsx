@@ -14,21 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ContactCard from "@/components/UserCard"
-import SearchBar from "@/components/SearchBar";
-import { data } from "@/data/message";
-import Link from "next/link";
-export default function Contacts() {
+
+import Link from "next/link"
+
+export default function NotFound() {
    return (
-      <div className="">
-         <SearchBar />
-         {
-            data.map((contact, index) => (
-               <Link key={index} href={`/home/profile/${contact.name}`}>
-                  <ContactCard name={contact.name} avatar={contact.avatar} description={contact.description} />
-               </Link>
-            ))
-         }
+      <div>
+         <h1>Not found</h1>
+         <p>we are sorry</p>
+         <Link href={'/home'} >Go back home</Link>
       </div>
    )
 }

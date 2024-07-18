@@ -16,6 +16,7 @@
  */
 "use client";
 import Image from "next/image";
+import Avatar from "@/components/Avatar";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from "@/components/Button";
 import Input from "@/components/Input";
@@ -37,14 +38,17 @@ export default function Login() {
    return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
          <div className="sm:mx-auto sm:w-full sm:max-w-md">
+         {/* 
             <img className="mx-auto h-10 w-auto w-10 h-10" src="https://www.svgrepo.com/show/301692/login.svg" alt="Workflow" />
+      
+         */}
             <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-slate-800">
                Sign in to your account
             </h2>
             <p className="mt-2 text-center text-sm leading-5 text-[#8098F9] max-w">
                Or {" "}
                <Link href="/register"
-                  className="font-medium text-[#8098F9] hover:underline focus:outline-none focus:underline transition ease-in-out duration-150">
+                  className="font-medium text-blue-400 hover:underline focus:outline-none focus:underline transition ease-in-out duration-150">
                   create a new acccount
                </Link>
             </p>
@@ -89,7 +93,7 @@ export default function Login() {
                      <span className="block w-full rounded-md shadow-sm">
                         <Button
                            title="SIGN IN"
-                           className="bg-[#8098F9] w-full"
+                           className="bg-blue-400 hover:bg-blue-500 w-full"
                         />
                      </span>
                   </div>
