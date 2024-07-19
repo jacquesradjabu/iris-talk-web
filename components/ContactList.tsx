@@ -14,12 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
+"use client";
 import { FaSearch } from 'react-icons/fa';
 import UserCard from './UserCard';
-import { messageData } from '@/data/messageData';
-export default function ContactList() {
+// import { messageData } from '@/data/messageData';
+import { useState, useEffect } from 'react';
+import { list } from '@/utils/userAPI';
+
+export default async function ContactList() {
+   const [message, setMessage] = useState('No user register yet!');
+   const [data, setData] = useState<IUser[]>([]);
+   useEffect(() => {
+      async function loadList () {
+         const allUsers: IUser[] = await list();
+         setData(allUsers);
+      }
+      loadList();
+   }, [])
+   console.log(data);
+   console.log(message);
    return (
       <div className="overflow-y-auto h-screen p-3 mb-9 pb-20">
 
@@ -33,18 +46,20 @@ export default function ContactList() {
                <FaSearch size={18} color='#f5f5f5' />
             </button>
          </div>
-
-         {/* all users will be displayed here */}
          {
-            messageData.map((item, index) => (
+            data.length == 0 && (
+               <h1></h1>
+            )
+         }
+         {
+            data.map((user: any, index: number) => (
                <UserCard
                   key={index}
-                  userDescription={item.messageContent}
+                  userName={user.userName}
+                  userEmail={user.userEmail}
                />
             ))
-           // if no user found, display a message here
          }
-         
       </div>
    )
 }

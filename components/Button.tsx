@@ -32,9 +32,9 @@ export default function Button({
       <button
          type={type}
          onClick={handleClick}
-         className={`text-gray-50 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center ${className}`}
+         className={`text-gray-50 focus:ring-4 focus:outline-none font-medium rounded-lg flex text-medium items-center px-5 py-2.5 text-center justify-center  ${className}`}
       >
-         {title}
+         {title?.toUpperCase()}
       </button>
    );
 }

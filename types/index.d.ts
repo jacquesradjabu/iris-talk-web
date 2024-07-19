@@ -8,6 +8,27 @@ interface IInputProps {
    className?: string;
 }
 
+interface IUser {
+   userId: string;
+   userName: string;
+   userEmail: string;
+   created: string;
+   updated: string;
+   userAvatarURL: null | string;
+   userDescription: null | string;
+}
+
+interface IUserRegister {
+   userName: string;
+   userEmail: string;
+   userPassword: string;
+}
+
+interface IUserLogin {
+   userName: string;
+   userPassword: string;
+}
+
 interface IAuthContext {
    accessToken: string;
    setAccessToken: Dispatch<SetStateAction<string>>;
