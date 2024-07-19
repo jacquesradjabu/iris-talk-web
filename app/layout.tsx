@@ -27,8 +27,8 @@ type RootLayoutProps = {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-   title: "Inbox",
-   description: "inbox chat social media",
+   title: "iris login",
+   description: "iris-chat login social media application",
 };
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
