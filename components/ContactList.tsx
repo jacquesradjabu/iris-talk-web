@@ -17,22 +17,27 @@
 "use client";
 import { FaSearch } from 'react-icons/fa';
 import UserCard from './UserCard';
-// import { messageData } from '@/data/messageData';
 import { useState, useEffect } from 'react';
 import { list } from '@/utils/userAPI';
 
 export default async function ContactList() {
-   const [message, setMessage] = useState('No user register yet!');
-   const [data, setData] = useState<IUser[]>([]);
-   useEffect(() => {
-      async function loadList () {
-         const allUsers: IUser[] = await list();
-         setData(allUsers);
-      }
-      loadList();
-   }, [])
-   console.log(data);
-   console.log(message);
+   const [users, setUsers] = useState<any[]>([]);
+   const [error, setError] = useState<string | null>(null);
+   fetch('http://localhost:8000/api/users/').then(resp => resp.json()).then(data => console.log(data));
+   // useEffect(() => {
+   //    const controller = new AbortController();
+   //    const fetchData = async () => {
+   //       try {
+   //          const userList = await list(controller.signal);
+   //          setUsers(userList);
+   //       } catch (err) {
+   //          setError('Failed to fetch users');
+   //       }
+   //    });
+
+   // fetchData();
+
+
    return (
       <div className="overflow-y-auto h-screen p-3 mb-9 pb-20">
 
@@ -46,6 +51,14 @@ export default async function ContactList() {
                <FaSearch size={18} color='#f5f5f5' />
             </button>
          </div>
+
+         <h1>Hello world</h1>
+
+      </div>
+   )
+};
+
+/*
          {
             data.length == 0 && (
                <h1></h1>
@@ -60,6 +73,5 @@ export default async function ContactList() {
                />
             ))
          }
-      </div>
-   )
-}
+
+*/

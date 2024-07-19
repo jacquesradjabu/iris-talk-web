@@ -30,18 +30,8 @@ interface IUserLogin {
 }
 
 interface IAuthContext {
-   accessToken: string;
-   setAccessToken: Dispatch<SetStateAction<string>>;
-   userName: string;
-   setUserName: Dispatch<SetStateAction<string>>;
-   userEmail: string;
-   setUserEmail: Dispatch<SetStateAction<string>>;
-   userId: string;
-   setUserId: Dispatch<SetStateAction<string>>;
-   created: string;
-   setCreated: Dispatch<SetStateAction<string>>;
-   userAvatarURL: string;
-   setUserAvatarURL: Dispatch<SetStateAction<string>>;
-   userDescription: string;
-   setUserDescription: Dispatch<SetStateAction<string>>;
+   currentUserToken: string;
+   setCurrentUserToken: Dispatch<SetStateAction<string>>;
+   currentUser: any;
+   setCurrentUser: Dispatch<SetStateAction<never[]>>;
 }

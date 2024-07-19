@@ -14,56 +14,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 const LINK_URL = 'http://localhost:8000/';
 // fetch all users available in the database
 
-export async function list(signal?: any) {
+export async function list(signal?: AbortSignal) {
    try {
-      let response = await fetch('http://localhost:8000/api/users/', {
-         method: 'GET',
-         // signal: signal,
-         // origins: 'https://localhost:8000/api/users',
+      const response = await axios.get('http://localhost:8000/api/users/', {
+         signal: signal,
+         headers: {
+            'Accept': 'application/json',
+         },
       });
-      const result = await response.json();
-      return await result.users;
-   } catch (err) {
-      console.log(err)
+      const result = await response.data;
+      return await result.data.users;
+   } catch (err: any) {
+      return err.message;
    }
 }
+
+// create a user
 
 export async function create(data: IUserRegister) {
    try {
-      let response = await fetch('http://localhost:8000/api/users/', {
-         method: 'POST',
+      let response = await axios.post('http://localhost:8000/api/users/', data, {
          headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
-         },
-         body: JSON.stringify(data)
-      })
-      return await response.json();
+            'Content-Type': 'application/json',
+         }
+      });
+      return response.data;
    } catch (err: any) {
       return err.message;
    }
 }
 
+// signin
+
 export async function signin(user: IUserLogin) {
    try {
-      let response = await fetch('http://localhost:8000/auth/signin/', {
-         method: 'POST',
+      let response = await axios.post('http://localhost:8000/auth/signin/', user, {
          headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+
          },
-         credentials: 'include',
-         body: JSON.stringify(user)
-      })
-      return await response.json()
+      });
+      return response.data;
    } catch (err: any) {
-      return err.message;
+      // If Axios response contains an error, it will be under 'response.data'
+      return err.response ? err.response.data : err.message;
    }
 }
 
