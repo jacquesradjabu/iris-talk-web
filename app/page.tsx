@@ -22,5 +22,5 @@ export default function LoginScreen() {
       <AuthProvider>
          <Login />
       </AuthProvider>
-   )
+   );
 }

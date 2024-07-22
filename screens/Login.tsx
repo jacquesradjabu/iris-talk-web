@@ -48,7 +48,7 @@ export default function Login() {
       }
       const currentUserData = await axios.get('http://localhost:8000/api/getcurrentuser/', {
          headers: {
-            'Authorization': `Bearer ${result.data.accessToken}`
+            'Authorization': `Bearer ${result?.data?.accessToken}`
          }
       });
       setCurrentUser(currentUserData);

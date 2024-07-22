@@ -16,7 +16,7 @@
  */
 import axios from 'axios';
 
-const LINK_URL = 'http://localhost:8000/';
+
 // fetch all users available in the database
 
 export async function list(signal?: AbortSignal) {
@@ -28,7 +28,7 @@ export async function list(signal?: AbortSignal) {
          },
       });
       const result = await response.data;
-      return await result.data.users;
+      return result;
    } catch (err: any) {
       return err.message;
    }

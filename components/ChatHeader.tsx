@@ -19,13 +19,13 @@ import { AuthContext } from "@/contexts/authContext";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ChatHeader({ avatarURL = "", userName = 'Alice' }: { avatarURL?: string, userName?: string }) {
-   const { userEmail } = useContext(AuthContext);
+export default function ChatHeader({ avatarURL = "", userName = "Unknown", userId }: { avatarURL?: string, userName?: string, userId?: string}) {
+   // const { userEmail } = useContext(AuthContext);
    // alert(userEmail);
    return (
       <header className="bg-white p-4 text-gray-700 flex justify-between border-b border-gray-200 w-full">
-         <h1 className="text-2xl font-semibold">Alice</h1>
-         <Link href={`/home/profile/${userName}`}>
+         <h1 className="text-2xl font-semibold">{userName}</h1>
+         <Link href={`/home/profile/${userId}`}>
             <div className={`w-10 h-10 rounded-full bg-[#8098F9] text-gray-50 overflow-hidden hover:cursor-pointer`}>
                {avatarURL ? (
                   <Image src={avatarURL} alt="Avatar" layout="fill" className={`w-10 h-10`} />
