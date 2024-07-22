@@ -17,18 +17,8 @@
 import { createContext } from 'react';
 
 export const AuthContext = createContext<IAuthContext>({
-    accessToken: '',
-    setAccessToken: null,
-    userName: '',
-    setUserName: null,
-    userEmail: '',
-    setUserEmail: null,
-    userId: '',
-    setUserId: null,
-    created: '',
-    setCreated: null,
-    userAvatarURL: '',
-    setUserAvatarURL: null,
-    userDescription: '',
-    setUserDescription: null,
+    currentUser: null,
+    setCurrentUser: null,
+    currentUserToken: '',
+    setCurrentUserToken: null,
 });

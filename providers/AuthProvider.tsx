@@ -18,29 +18,14 @@ import { useState, ReactNode } from 'react';
 import { AuthContext } from '@/contexts/authContext';
 
 export default function AuthProvider({ children }: { children: ReactNode }) {
-    const [accessToken, setAccessToken] = useState('');
-    const [userName, setUserName] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userId, setUserId] = useState('');
-    const [created, setCreated] = useState('');
-    const [userAvatarURL, setUserAvatarURL] = useState('');
-    const [userDescription, setUserDescription] = useState('');
+    const [currentUser, setCurrentUser] = useState([]);
+    const [currentUserToken, setCurrentUserToken] = useState('');
     return (
         <AuthContext.Provider value={{
-            accessToken: accessToken,
-            setAccessToken: setAccessToken,
-            userName: userName,
-            setUserName: setUserName,
-            userEmail: userEmail,
-            setUserEmail: setUserEmail,
-            userId: userId,
-            setUserId: setUserId,
-            created: created,
-            setCreated: setCreated,
-            userAvatarURL: userAvatarURL,
-            setUserAvatarURL: setUserAvatarURL,
-            userDescription: userDescription,
-            setUserDescription: setUserDescription,
+            currentUser,
+            setCurrentUser,
+            currentUserToken,
+            setCurrentUserToken
         }}>
             {children}
         </AuthContext.Provider>

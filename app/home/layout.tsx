@@ -14,11 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import ContactList from "@/components/ContactList";
-import SidebarHeader from "@/components/SidebarHeader";
-
+import Sidebar from "@/components/Sidebar";
 
 type HomeLayoutProps = {
    children: ReactNode;
@@ -26,7 +25,7 @@ type HomeLayoutProps = {
 
 export const metadata: Metadata = {
    title: "home",
-   description: "home, page d'acceuil, landing page, sofia, inbox chat social media reseau social home page page d'acceuil",
+   description: "home, page d'acceuil, landing page, sofia, iris-chat social media reseau social home page page d'acceuil",
 };
 
 
@@ -35,12 +34,8 @@ export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
       <html lang="en">
          <body>
             <div className="flex h-screen overflow-hidden">
-               <div className="w-1/2 lg:w-1/3 bg-white border-r border-gray-300">
-                  {/* <!-- Sidebar Header --> */}
-                  <SidebarHeader userName="Birusha" avatarURL={''} />
-                  {/* <!-- Contact List --> */}
-                  <ContactList />
-               </div>
+               {/* sidebar -> aside part */}
+               <Sidebar />
                {/* <!-- Main Chat Area --> */}
                {children}
             </div>

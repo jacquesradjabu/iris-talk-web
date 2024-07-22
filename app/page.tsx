@@ -14,7 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+'use client';
+import AuthProvider from "@/providers/AuthProvider"
 import Login from "@/screens/Login"
 export default function LoginScreen() {
-   return <Login />
+   return (
+      <AuthProvider>
+         <Login />
+      </AuthProvider>
+   );
 }

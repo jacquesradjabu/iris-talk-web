@@ -14,15 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+'use client';
 import Button from "@/components/Button";
 import Avatar from "@/components/Avatar";
-
+import { users, IFakeData } from "@/data/fake";
 export default function ProfileId({ params }: {
     params: {
         userId: string;
     }
 }) {
+    const userData: IFakeData | any = users.find(u => u.userId === params.userId);
+    const {  userName, userId, userEmail } = userData;
     return (
         <div className="flex-1 p-32 items-center justify-center">
 
@@ -38,9 +40,9 @@ export default function ProfileId({ params }: {
                             />
                         </div>
                         <div className="py-2">
-                            <h3 className="font-bold text-2xl text-gray-800 mb-1">Cait Genevieve</h3>
+                            <h3 className="font-bold text-2xl text-gray-800 mb-1">{userName}</h3>
                             <div className="text-gray-700 items-center flex flex-col">
-                                <p className="text-slate-500 text-sm">birushandegeya@gmail.com</p>
+                                <p className="text-slate-500 text-sm">{userEmail}</p>
                                 <p>
                                     New York, NY Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                                 </p>
@@ -49,7 +51,8 @@ export default function ProfileId({ params }: {
                     </div>
                     <Button
                         className="bg-blue-400 hover:bg-blue-500 w-full focus:ring-blue-300 justify-center items-center"
-                        title="SEND MESSAGE"
+                        title="GO BACK"
+                        // handleClick={() => }
                     />
                 </div>
             </div>

@@ -40,7 +40,7 @@ export default function SidebarHeader({
    return (
       <header className="p-4 border-b border-gray-300 flex justify-between items-center">
          <Link href={'/home'}>
-            <h1 className="text-2xl font-semibold text-blue-400 hover:text-blue-500">Inbox</h1>
+            <h1 className="text-2xl font-semibold text-blue-400 hover:text-blue-500">IRIS</h1>
          </Link>
          <div className="flex items-center gap-3">
             <Link href={'/home/profile'} className="flex items-center gap-3">

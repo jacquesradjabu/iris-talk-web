@@ -17,22 +17,33 @@
 "use client";
 import { FaSearch } from 'react-icons/fa';
 import UserCard from './UserCard';
-// import { messageData } from '@/data/messageData';
-import { useState, useEffect } from 'react';
+import { users } from '@/data/fake';
+import { useEffect, useState } from 'react';
 import { list } from '@/utils/userAPI';
-
+import Link from 'next/link';
 export default async function ContactList() {
-   const [message, setMessage] = useState('No user register yet!');
-   const [data, setData] = useState<IUser[]>([]);
-   useEffect(() => {
-      async function loadList () {
-         const allUsers: IUser[] = await list();
-         setData(allUsers);
-      }
-      loadList();
-   }, [])
-   console.log(data);
-   console.log(message);
+   let global: any = [];
+   const [error, setError] = useState<string | null>(null);
+   // useEffect(() => {
+   //    const controller = new AbortController();
+   //    const fetchData = async () => {
+   //       try {
+   //          const userList = await list(controller.signal);
+   //          const result = await userList;
+   //          console.log(result);
+   //          for (let i = 0; i < result.length; i++) {
+   //             console.log(result[i]);
+   //          }
+   //          global = userList;
+   //          console.log(userList);
+   //          // setUsers(userList);
+   //       } catch (err) {
+   //          setError('Failed to fetch users');
+   //       }
+   //    }
+   //    fetchData()
+   // }, []);
+   // console.log('je suis', global);
    return (
       <div className="overflow-y-auto h-screen p-3 mb-9 pb-20">
 
@@ -47,6 +58,29 @@ export default async function ContactList() {
             </button>
          </div>
          {
+            users.length == 0 && (
+               <h1>No user registered yet</h1>
+            )
+         }
+         {
+            users.map((user: any, index: number) => (
+               <Link
+                  key={index}
+                  href={`/home/${user.userId}`}>
+                  <UserCard
+                     userName={user.userName}
+                     userEmail={user.userEmail}
+                  />
+
+               </Link>
+            ))
+         }
+      </div>
+   )
+};
+
+/*
+         {
             data.length == 0 && (
                <h1></h1>
             )
@@ -60,6 +94,5 @@ export default async function ContactList() {
                />
             ))
          }
-      </div>
-   )
-}
+
+*/
