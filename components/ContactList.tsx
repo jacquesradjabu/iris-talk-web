@@ -17,33 +17,26 @@
 "use client";
 import { FaSearch } from 'react-icons/fa';
 import UserCard from './UserCard';
-import { users } from '@/data/fake';
 import { useEffect, useState } from 'react';
 import { list } from '@/utils/userAPI';
 import Link from 'next/link';
-export default async function ContactList() {
-   let global: any = [];
-   const [error, setError] = useState<string | null>(null);
-   // useEffect(() => {
-   //    const controller = new AbortController();
-   //    const fetchData = async () => {
-   //       try {
-   //          const userList = await list(controller.signal);
-   //          const result = await userList;
-   //          console.log(result);
-   //          for (let i = 0; i < result.length; i++) {
-   //             console.log(result[i]);
-   //          }
-   //          global = userList;
-   //          console.log(userList);
-   //          // setUsers(userList);
-   //       } catch (err) {
-   //          setError('Failed to fetch users');
-   //       }
-   //    }
-   //    fetchData()
-   // }, []);
-   // console.log('je suis', global);
+
+export default function ContactList() {
+   let [contactList, setContactList] = useState<any>(null);
+   useEffect(() => {
+      const controller = new AbortController();
+      const fetchData = async () => {
+         try {
+            const userList = await list(controller.signal);
+            const result = await userList;
+            console.log(userList);
+            setContactList(userList.users);
+         } catch (err) {
+            console.log('Failed to fetch users');
+         }
+      }
+      fetchData()
+   }, []);
    return (
       <div className="overflow-y-auto h-screen p-3 mb-9 pb-20">
 
@@ -57,42 +50,23 @@ export default async function ContactList() {
                <FaSearch size={18} color='#f5f5f5' />
             </button>
          </div>
-         {
-            users.length == 0 && (
-               <h1>No user registered yet</h1>
-            )
-         }
-         {
-            users.map((user: any, index: number) => (
-               <Link
-                  key={index}
-                  href={`/home/${user.userId}`}>
-                  <UserCard
-                     userName={user.userName}
-                     userEmail={user.userEmail}
-                  />
 
-               </Link>
-            ))
+         {
+            contactList?.length == 0 || !contactList || contactList == null ? (
+               <p className="text-sm text-gray-400 text-center">No contacts found</p>
+            ) : (
+               contactList?.map((user: any) => (
+                  <Link
+                     key={user.userId}
+                     href={`/home/${user.userId}`}>
+                     <UserCard
+                        userName={user.userName}
+                        userEmail={user.userDescription ? user.userDescription : "I am a mysterious who has yet to fill out my bio"}
+                     />
+                  </Link>
+               ))
+            )
          }
       </div>
    )
 };
-
-/*
-         {
-            data.length == 0 && (
-               <h1></h1>
-            )
-         }
-         {
-            data.map((user: any, index: number) => (
-               <UserCard
-                  key={index}
-                  userName={user.userName}
-                  userEmail={user.userEmail}
-               />
-            ))
-         }
-
-*/

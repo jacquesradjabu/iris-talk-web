@@ -30,6 +30,7 @@ interface IUserLogin {
 }
 
 interface IAuthContext {
+   users: IUser[] | null;
    currentUserToken: string;
    setCurrentUserToken: Dispatch<SetStateAction<string>>;
    currentUser: any;

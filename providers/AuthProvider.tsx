@@ -14,18 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useState, ReactNode } from 'react';
+'use client';
+import { useState, ReactNode, useEffect } from 'react';
 import { AuthContext } from '@/contexts/authContext';
-
+import { list } from '@/utils/userAPI';
 export default function AuthProvider({ children }: { children: ReactNode }) {
     const [currentUser, setCurrentUser] = useState([]);
     const [currentUserToken, setCurrentUserToken] = useState('');
+    const [usersUserData, setUsersUserData] = useState<any>();
+    useEffect(() => {
+        async function load(){
+            const resp = await list();
+            setUsersUserData(resp.users);
+            // console.log(resp.users);
+        }
+        load();
+    }, []);
+    // console.log(usersUserData);
     return (
         <AuthContext.Provider value={{
             currentUser,
             setCurrentUser,
             currentUserToken,
-            setCurrentUserToken
+            setCurrentUserToken,
+            users: usersUserData
         }}>
             {children}
         </AuthContext.Provider>

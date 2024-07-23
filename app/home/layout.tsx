@@ -18,7 +18,7 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import Sidebar from "@/components/Sidebar";
-
+import AuthProvider from "@/providers/AuthProvider";
 type HomeLayoutProps = {
    children: ReactNode;
 }
@@ -35,7 +35,9 @@ export default function RootLayout({ children }: Readonly<HomeLayoutProps>) {
          <body>
             <div className="flex h-screen overflow-hidden">
                {/* sidebar -> aside part */}
-               <Sidebar />
+               <AuthProvider>
+                  <Sidebar />
+               </AuthProvider>
                {/* <!-- Main Chat Area --> */}
                {children}
             </div>

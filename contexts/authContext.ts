@@ -21,4 +21,5 @@ export const AuthContext = createContext<IAuthContext>({
     setCurrentUser: null,
     currentUserToken: '',
     setCurrentUserToken: null,
+    users: null
 });

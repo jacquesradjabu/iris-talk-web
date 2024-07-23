@@ -35,7 +35,7 @@ export default function UserMessage({
                <p className="text-sm text-gray-100 text-right">{time}</p>
             </div>
             <div className="w-9 h-9 rounded-full flex items-center justify-center ml-2">
-               {avatarURL ? (
+               {!avatarURL || avatarURL == null ? (
                   <Avatar />
                ) : (
                   <img src={`${avatarURL}`} alt="A" className="w-8 h-8 rounded-full bg-blue-300" />
@@ -47,7 +47,7 @@ export default function UserMessage({
    return (
       <div className="flex mb-4 cursor-pointer text-gray-700">
          <div className="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-            {avatarURL ? (
+            {!avatarURL || avatarURL == null ? (
                <Avatar />
             ) : (
                <img src={`${avatarURL}`} alt="" className="w-8 h-8 rounded-full" />

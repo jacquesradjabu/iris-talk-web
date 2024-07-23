@@ -39,7 +39,20 @@ export default function SidebarHeader({
    }
    return (
       <header className="p-4 border-b border-gray-300 flex justify-between items-center">
-         <Link href={'/home'}>
+         <Link href={'/home'} className="flex gap-3 items-center">
+            <div>
+               <svg
+                  className="w-8 h-8"
+                  width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="100" fill="#4A90E2" />
+                  <path d="M70 80C70 72.268 76.268 66 84 66H116C123.732 66 130 72.268 130 80V120C130 127.732 123.732 134 116 134H84C76.268 134 70 127.732 70 120V80Z" fill="white" />
+                  <circle cx="90" cy="95" r="10" fill="#4A90E2" />
+                  <path d="M90 95C90 98.3137 87.3137 101 84 101C80.6863 101 78 98.3137 78 95C78 91.6863 80.6863 89 84 89C87.3137 89 90 91.6863 90 95Z" fill="white" />
+                  <path d="M110 95C110 98.3137 107.314 101 104 101C100.686 101 98 98.3137 98 95C98 91.6863 100.686 89 104 89C107.314 89 110 91.6863 110 95Z" fill="white" />
+                  <path d="M93 118L98 108L103 118H93Z" fill="#4A90E2" />
+               </svg>
+
+            </div>
             <h1 className="text-2xl font-semibold text-blue-400 hover:text-blue-500">IRIS</h1>
          </Link>
          <div className="flex items-center gap-3">
@@ -59,7 +72,7 @@ export default function SidebarHeader({
             />
          </div>
 
-         <Alert 
+         <Alert
             showVisibility={useSignout}
             isVisible={isVisible}
          />
