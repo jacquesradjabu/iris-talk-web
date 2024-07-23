@@ -42,6 +42,7 @@ export default function Login() {
       const resp = await signin(data);
       const result = await resp;
       setMessage(result.message);
+      localStorage.clear();
       const currentUserInDB = localStorage.getItem('currentUserToken');
       if (!currentUserInDB) {
          localStorage.setItem('currentUserToken', JSON.stringify(result.data.accessToken));
@@ -81,7 +82,7 @@ export default function Login() {
                         label="Password"
                         type="password"
                         refLabel="userPassword"
-                        placeholder="******"
+                        placeholder="••••••••"
                      />
 
                      <div className="mt-6 flex items-center justify-between">

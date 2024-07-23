@@ -50,6 +50,27 @@ export async function create(data: IUserRegister) {
    }
 }
 
+// read a specific user by id
+export async function read(
+   userId: string,
+   currentUserToken?: string | null,
+   signal?: AbortSignal
+) {
+   try {
+      const response = await axios.get(`http://localhost:8000/api/users/${userId}`, {
+         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMmI0OTk1Yi0yN2ZlLTQwNDItODc5YS1lOTNkYjk1NDRlMDIiLCJpYXQiOjE3MjE3MjMzNzZ9.Zn-UvmfVzawKjEZ4ZIMZUwzXLwD9lPBsaJA2N5FJDkA'}`
+         },
+         signal: signal
+      });
+      return response.data;
+   } catch (err) {
+      console.log(err);
+   }
+};
+
 // signin
 
 export async function signin(user: IUserLogin) {

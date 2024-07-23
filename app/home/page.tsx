@@ -15,6 +15,11 @@
  * limitations under the License.
  */
 import Home from "@/screens/Home";
+import AuthProvider from "@/providers/AuthProvider";
 export default function HomeScreen() {
-   return <Home />;
+   return (
+      <AuthProvider>
+         <Home />
+      </AuthProvider>
+   );
 }

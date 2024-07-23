@@ -15,48 +15,93 @@
  * limitations under the License.
  */
 'use client';
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import Avatar from "@/components/Avatar";
-import { users, IFakeData } from "@/data/fake";
+import { useRouter } from "next/navigation";
+import { read } from "@/utils/userAPI";
+
 export default function ProfileId({ params }: {
     params: {
-        userId: string;
+        profileId: string;
     }
 }) {
-    const userData: IFakeData | any = users.find(u => u.userId === params.userId);
-    const {  userName, userId, userEmail } = userData;
+    const [loading, setLoading] = useState(true);
+    const [userProfile, setUserProfile] = useState<any>([]);
+    const token = localStorage.getItem('currentUserToken');
+    // console.log(token);
+    const router = useRouter();
+    const goBack = (path: string) => {
+        if (!path) return;
+        router.push(path);
+    }
+    useEffect(() => {
+        const controller = new AbortController();
+        const fetchData = async () => {
+            try {
+                const currentUserData = await axios.get(`http://localhost:8000/api/users/${params.profileId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('currentUserToken')}`
+                    }
+                });
+                const result = await currentUserData;
+                setUserProfile(result.data);
+                console.log(result.data);
+                setLoading(!loading);
+                // const uniqueProfile = await read(
+                //     params.profileId,
+                //     token,
+                //     controller.signal
+                // );
+                // const result = await uniqueProfile;
+                // console.log(result);
+                // setUserProfile(result);
+            } catch (err) {
+                console.log('Failed to fetch users');
+                setLoading(!loading);
+            }
+        }
+        fetchData()
+    }, []);
+    console.log(userProfile);
     return (
         <div className="flex-1 p-32 items-center justify-center">
-
-            {/* <!-- Card start --> */}
             <div className="max-w-sm mx-auto rounded-lg overflow-hidden bg-gray-50 border border-gray-300 shadow-lg flex items-center justify-center">
+                {/* Card start */}
                 <div className="px-4 pb-6">
                     <div className="text-center my-4">
-                        {/* <img className="h-32 w-32 rounded-full mx-auto my-4"
-                            src={`https://randomuser.me/api/portraits/women/21.jpg`} alt="" width={128} height={128} /> */}
                         <div className="flex items-center justify-center">
                             <Avatar
                                 className="w-32 h-32"
                             />
                         </div>
-                        <div className="py-2">
-                            <h3 className="font-bold text-2xl text-gray-800 mb-1">{userName}</h3>
-                            <div className="text-gray-700 items-center flex flex-col">
-                                <p className="text-slate-500 text-sm">{userEmail}</p>
-                                <p>
-                                    New York, NY Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                </p>
+                        {loading ? (
+                            <div className="animate-pulse flex flex-col items-center">
+                                <div className="w-32 h-4 bg-gray-300 rounded mt-2"></div>
+                                <div className="w-48 h-4 bg-gray-300 rounded mt-2"></div>
+                                <div className="w-24 h-4 bg-gray-300 rounded mt-2"></div>
                             </div>
-                        </div>
+                        ) : (
+                            <div className="py-2">
+                                <h3 className="font-bold text-2xl text-gray-800 mb-1">{userProfile.userName}</h3>
+                                <div className="text-gray-700 items-center flex flex-col">
+                                    <p className="text-slate-500 text-sm">{userProfile.userEmail}</p>
+                                    <p>
+                                        {userProfile.userDescription ? userProfile.userDescription : "I am a mysterious who has yet to fill out my bio"}
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     <Button
                         className="bg-blue-400 hover:bg-blue-500 w-full focus:ring-blue-300 justify-center items-center"
                         title="GO BACK"
-                        // handleClick={() => }
+                        handleClick={() => goBack(`/home/${params.profileId}`)}
                     />
                 </div>
+                {/* Card end */}
             </div>
-            {/* <!-- Card end --> */}
-        </div>
+        </div >
     );
 }

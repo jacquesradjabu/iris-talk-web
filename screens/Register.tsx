@@ -75,7 +75,7 @@ export default function Register() {
                         label="Your Password"
                         type="password"
                         refLabel="userPassword"
-                        placeholder="******"
+                        placeholder="••••••••"
                      />
 
                      <div className="flex items-start">
