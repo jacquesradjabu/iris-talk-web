@@ -20,9 +20,9 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Link from "next/link";
 import { signin } from '@/utils/userAPI';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '@/contexts/authContext';
-import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 type Inputs = {
    userName: string
@@ -30,34 +30,35 @@ type Inputs = {
 }
 
 export default function Login() {
-   const { setCurrentUser, currentUser } = useContext(AuthContext);
-   const [message, setMessage] = useState('');
+   const { setCreated, setUserAvatarURL, setUserEmail, setUserId, setUserName, setUserDescription } = useContext(AuthContext);
+   const router = useRouter();
    const {
       register,
       handleSubmit,
-      reset,
-      formState: { errors }
+      reset
    } = useForm<Inputs>();
    const onSubmit: SubmitHandler<Inputs> = async (data: IUserLogin) => {
-      const resp = await signin(data);
-      const result = await resp;
-      setMessage(result.message);
-      localStorage.clear();
-      const currentUserInDB = localStorage.getItem('currentUserToken');
-      if (!currentUserInDB) {
-         localStorage.setItem('currentUserToken', JSON.stringify(result.data.accessToken));
+      try {
+         localStorage.clear();
+         sessionStorage.clear();
+         const resp = await signin(data);
+         const result = await resp;
+         const connectedUser = await result.data;
+         setUserName(await connectedUser.userName);
+         setCreated(await connectedUser.created);
+         setUserAvatarURL(await connectedUser.userAvatarURL);
+         setUserEmail(await connectedUser.userEmail);
+         setUserId(await connectedUser.userId);
+         setUserDescription(await connectedUser.userDescription);
+         localStorage.setItem('accessToken', await connectedUser.accessToken);
+         sessionStorage.setItem('accessToken', await connectedUser.accessToken);
+         router.push('/home');
+         localStorage.setItem('currentUserId', await connectedUser.userId);
+         reset();
+      } catch (err) {
+         console.warn(err);
       }
-      const currentUserData = await axios.get('http://localhost:8000/api/getcurrentuser/', {
-         headers: {
-            'Authorization': `Bearer ${result?.data?.accessToken}`
-         }
-      });
-      setCurrentUser(currentUserData);
-      // console.log(result);
-      console.log(currentUser);
-      // console.log(currentUserData);
    }
-   console.log(message);
    return (
       <section className="bg-gray-50 px-3 md:px-0 flex flex-col items-center justify-center mx-auto h-screen lg:py-0">
          <div className="w-full bg-white rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0">

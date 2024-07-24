@@ -1,3 +1,20 @@
+
+interface IUser {
+   userId: string;
+   userName: string;
+   userEmail: string;
+   created: string;
+   userAvatarURL: null | string;
+   userDescription: null | string;
+   setUserId: Dispatch<SetStateAction<string>>,
+   setUserName: Dispatch<SetStateAction<string>>,
+   setUserEmail: Dispatch<SetStateAction<string>>,
+   setCreated: Dispatch<SetStateAction<string>>,
+   setUserAvatarURL: Dispatch<SetStateAction<string>>,
+   setUserDescription: Dispatch<SetStateAction<string>>
+}
+
+
 interface IInputProps {
    type?: string;
    label: string;
@@ -8,15 +25,7 @@ interface IInputProps {
    className?: string;
 }
 
-interface IUser {
-   userId: string;
-   userName: string;
-   userEmail: string;
-   created: string;
-   updated: string;
-   userAvatarURL: null | string;
-   userDescription: null | string;
-}
+
 
 interface IUserRegister {
    userName: string;

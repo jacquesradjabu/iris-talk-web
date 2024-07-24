@@ -20,7 +20,8 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import Avatar from "@/components/Avatar";
 import { useRouter } from "next/navigation";
-import { read } from "@/utils/userAPI";
+import { FaCalendarWeek } from 'react-icons/fa';
+
 
 export default function ProfileId({ params }: {
     params: {
@@ -29,8 +30,6 @@ export default function ProfileId({ params }: {
 }) {
     const [loading, setLoading] = useState(true);
     const [userProfile, setUserProfile] = useState<any>([]);
-    const token = localStorage.getItem('currentUserToken');
-    // console.log(token);
     const router = useRouter();
     const goBack = (path: string) => {
         if (!path) return;
@@ -49,14 +48,6 @@ export default function ProfileId({ params }: {
                 setUserProfile(result.data);
                 console.log(result.data);
                 setLoading(!loading);
-                // const uniqueProfile = await read(
-                //     params.profileId,
-                //     token,
-                //     controller.signal
-                // );
-                // const result = await uniqueProfile;
-                // console.log(result);
-                // setUserProfile(result);
             } catch (err) {
                 console.log('Failed to fetch users');
                 setLoading(!loading);
@@ -64,7 +55,6 @@ export default function ProfileId({ params }: {
         }
         fetchData()
     }, []);
-    console.log(userProfile);
     return (
         <div className="flex-1 p-32 items-center justify-center">
             <div className="max-w-sm mx-auto rounded-lg overflow-hidden bg-gray-50 border border-gray-300 shadow-lg flex items-center justify-center">
@@ -81,12 +71,17 @@ export default function ProfileId({ params }: {
                                 <div className="w-32 h-4 bg-gray-300 rounded mt-2"></div>
                                 <div className="w-48 h-4 bg-gray-300 rounded mt-2"></div>
                                 <div className="w-24 h-4 bg-gray-300 rounded mt-2"></div>
+                                <div className="w-24 h-4 bg-gray-300 rounded mt-2"></div>
                             </div>
                         ) : (
                             <div className="py-2">
                                 <h3 className="font-bold text-2xl text-gray-800 mb-1">{userProfile.userName}</h3>
                                 <div className="text-gray-700 items-center flex flex-col">
                                     <p className="text-slate-500 text-sm">{userProfile.userEmail}</p>
+                                    <div className="text-slate-500 text-sm flex gap-3 items-center py-2">
+                                        <FaCalendarWeek size={18} />
+                                        <p>Joined {userProfile.created}</p>
+                                    </div>
                                     <p>
                                         {userProfile.userDescription ? userProfile.userDescription : "I am a mysterious who has yet to fill out my bio"}
                                     </p>

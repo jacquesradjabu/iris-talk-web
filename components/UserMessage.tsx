@@ -24,7 +24,7 @@ export default function UserMessage({
    time }: {
       messageContent: string;
       avatarURL?: string;
-      state: boolean;
+      state?: boolean;
       time: string;
    }) {
    if (state) {

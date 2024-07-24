@@ -26,7 +26,7 @@ export default function ChatHeader({ avatarURL = "", userName = "Unknown", userI
       <header className="bg-white p-4 text-gray-700 flex justify-between border-b border-gray-200 w-full">
          <h1 className="text-2xl font-semibold">{userName}</h1>
          <Link href={`/home/profile/${userId}`}>
-            <div className={`w-10 h-10 rounded-full bg-[#8098F9] text-gray-50 overflow-hidden hover:cursor-pointer`}>
+            <div className={`w-10 h-10 rounded-full bg-blue-500 text-gray-50 overflow-hidden hover:cursor-pointer`}>
                {avatarURL ? (
                   <Image src={avatarURL} alt="Avatar" layout="fill" className={`w-10 h-10`} />
                ) : (
