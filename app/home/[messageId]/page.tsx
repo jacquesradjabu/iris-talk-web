@@ -1,15 +1,14 @@
 "use client";
-import { users, IFakeData } from "@/data/fake";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import ChatHeader from "@/components/ChatHeader";
-import ChatMessages from "@/components/ChatMessages";
 import { useForm, SubmitHandler } from "react-hook-form";
 import UserMessage from "@/components/UserMessage";
 import { messageData } from "@/data/messageData";
-import { useState } from "react";
-// import AuthProvider from "@/providers/AuthProvider";
-// import { AuthContext } from "@/contexts/authContext";
+import { sendMessage, getTalk } from "@/utils/messageAPI";
+
 type Inputs = {
-   userContent: string;
+   messageContent: string;
 }
 
 export default function MessageByUser({ params }: {
@@ -17,23 +16,48 @@ export default function MessageByUser({ params }: {
       messageId: string;
    }
 }) {
-   const [messageData, setMessageData] = useState<any>([]);
-   const { register, handleSubmit } = useForm<Inputs>();
-   const onSubmit: SubmitHandler<Inputs> = (d) => {
-      // alert(d.userContent);
+   const [senderName, setSenderName] = useState('');
+   const [messageList, setMessageList] = useState<any>([]);
+   const { register, handleSubmit, reset } = useForm<Inputs>();
+   // load the sender Name from the server
+   useEffect(() => {
+      const loadSenderUser = async () => {
+         try {
+            const currentUserData = await axios.get(`http://localhost:8000/api/users/${params.messageId}`, {
+               headers: {
+                  'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+               }
+            });
+            const result = await currentUserData;
+            setSenderName(await result.data.userName);
+         } catch (err) {
+            console.log('Failed to fetch users');
+         }
+      }
+      loadSenderUser()
+   }, []);
+
+   // load the all the discussion messages
+
+   useEffect(() => {
+      console.log('laoding all messages else say hello to sender');
+   }, []);
+
+   const onSubmit: SubmitHandler<Inputs> = async (d) => {
+      try {
+         alert(d.messageContent);
+         reset();
+      } catch (e) {
+         console.warn(e);
+      }
    }
-   const userData: IFakeData | any = users.find(u => u.userId === params.messageId);
-   const { userName, userId } = userData;
-   // alert(userName);
-   // const { userName } = messageUserId
-   // console.log(params.messageId);
-   // console.log(messageUserId);
+
    return (
       <div className="flex-1">
          {/* <!-- Chat Header --> */}
          <ChatHeader
-            userName={userName}
-            userId={userId}
+            userName={senderName}
+            userId={params.messageId}
          />
          {/* <!-- Chat Messages --> */}
 
@@ -56,10 +80,10 @@ export default function MessageByUser({ params }: {
                <input
                   type="text"
                   placeholder="Type a message..."
-                  {...register('userContent', { required: true, })}
+                  {...register('messageContent', { required: true, })}
                   className="w-full p-2 px-4 rounded-md border border-gray-400 focus:outline-none focus:border-[#8098F9]"
                />
-               <button className="bg-blue-400 hover:bg-blue-500 text-gray-50 px-4 py-2 rounded-md ml-2">Send</button>
+               <button className="bg-blue-500 hover:bg-blue-600 text-gray-50 px-4 py-2 rounded-md ml-2">Send</button>
             </form>
          </div>
       </div>

@@ -16,10 +16,17 @@
  */
 import { createContext } from 'react';
 
-export const AuthContext = createContext<IAuthContext>({
-    currentUser: null,
-    setCurrentUser: null,
-    currentUserToken: '',
-    setCurrentUserToken: null,
-    users: null
+export const AuthContext = createContext<IUser>({
+    userId: '',
+    userName: '',
+    userEmail: '',
+    created: '',
+    userAvatarURL: '',
+    userDescription: '',
+    setUserId: null,
+    setUserName: null,
+    setUserEmail: null,
+    setCreated: null,
+    setUserAvatarURL: null,
+    setUserDescription: null,
 });

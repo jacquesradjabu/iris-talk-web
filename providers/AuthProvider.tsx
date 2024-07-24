@@ -15,29 +15,30 @@
  * limitations under the License.
  */
 'use client';
-import { useState, ReactNode, useEffect } from 'react';
+import { useState, ReactNode } from 'react';
 import { AuthContext } from '@/contexts/authContext';
-import { list } from '@/utils/userAPI';
+
 export default function AuthProvider({ children }: { children: ReactNode }) {
-    const [currentUser, setCurrentUser] = useState([]);
-    const [currentUserToken, setCurrentUserToken] = useState('');
-    const [usersUserData, setUsersUserData] = useState<any>();
-    useEffect(() => {
-        async function load(){
-            const resp = await list();
-            setUsersUserData(resp.users);
-            // console.log(resp.users);
-        }
-        load();
-    }, []);
-    // console.log(usersUserData);
+    const [userId, setUserId] = useState('');
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [created, setCreated] = useState('');
+    const [userAvatarURL, setUserAvatarURL] = useState('');
+    const [userDescription, setUserDescription] = useState('');
     return (
         <AuthContext.Provider value={{
-            currentUser,
-            setCurrentUser,
-            currentUserToken,
-            setCurrentUserToken,
-            users: usersUserData
+            userId: userId,
+            setUserId: setUserId,
+            userName: userName,
+            setUserName: setUserName,
+            userEmail: userEmail,
+            setUserEmail: setUserEmail,
+            created: created,
+            setCreated: setCreated,
+            userAvatarURL: userAvatarURL,
+            setUserAvatarURL: setUserAvatarURL,
+            userDescription: userDescription,
+            setUserDescription: setUserDescription,
         }}>
             {children}
         </AuthContext.Provider>

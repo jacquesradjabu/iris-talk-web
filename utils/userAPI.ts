@@ -118,3 +118,18 @@ export async function signin(user: IUserLogin) {
 //    export async function remove(): Promise<void> {
 //       console.log('removing...');
 //    }
+
+/*
+template
+
+rentuser/', {
+      //    headers: {
+      //       'Authorization': `Bearer ${result?.data?.accessToken}`
+      //    }
+
+         // const currentUser = await axios.get('http://localhost:8000/api/getcurrentuser/', {
+      //    headers: {
+      //       'Authorization': `Bearer ${result?.data?.accessToken}`
+      //    }
+      // });
+*/

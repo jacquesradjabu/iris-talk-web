@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 "use client";
 import Image from "next/image";
 import Avatar from "./Avatar";
@@ -23,6 +22,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Alert from "./Alert";
 import { useState } from "react";
+import axios from "axios";
+
+
 
 export default function SidebarHeader({
    avatarURL,
@@ -33,16 +35,23 @@ export default function SidebarHeader({
 }) {
    const router = useRouter();
    const [isVisible, setIsVisible] = useState(false);
-   const useSignout = () => {
+   const cancel = () => {
       setIsVisible(!isVisible);
-      // router.push('/');
+   }
+   const signout = async () => {
+      const isSignout = await axios.get('http://localhost:8000/auth/signout');
+      const result = await isSignout.data;
+      console.log(result);
+      localStorage.clear();
+      sessionStorage.clear();
+      router.push('/');
    }
    return (
       <header className="p-4 border-b border-gray-300 flex justify-between items-center">
          <Link href={'/home'} className="flex gap-3 items-center">
             <div>
                <svg
-                  className="w-8 h-8"
+                  className="w-8 h-8 fill:bg-blue-500"
                   width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="100" cy="100" r="100" fill="#4A90E2" />
                   <path d="M70 80C70 72.268 76.268 66 84 66H116C123.732 66 130 72.268 130 80V120C130 127.732 123.732 134 116 134H84C76.268 134 70 127.732 70 120V80Z" fill="white" />
@@ -67,14 +76,16 @@ export default function SidebarHeader({
             </Link>
             <Button
                title="Signout"
-               className="bg-red-400 hover:bg-red-500"
-               handleClick={useSignout}
+               className="bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300"
+               handleClick={cancel}
             />
          </div>
 
          <Alert
-            showVisibility={useSignout}
+            showVisibility={cancel}
             isVisible={isVisible}
+            logout={signout}
+            description="Are you sure to log out?"
          />
       </header>
    );

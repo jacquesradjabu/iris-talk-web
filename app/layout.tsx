@@ -17,6 +17,7 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import AuthProvider from "@/providers/AuthProvider";
 import "./index.css";
 
 
@@ -34,9 +35,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
    return (
       <html lang="en">
-         <body className={inter.className}>
-            {children}
-         </body>
+         <AuthProvider>
+            <body className={inter.className}>
+               {children}
+            </body>
+         </AuthProvider>
       </html>
    );
 }

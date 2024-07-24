@@ -16,12 +16,11 @@
  */
 
 "use client";
-// import { useContext } from "react";
 import ChatHeader from "@/components/ChatHeader";
 import ChatMessages from "@/components/ChatMessages";
 import { useForm, SubmitHandler } from "react-hook-form";
-// import AuthProvider from "@/providers/AuthProvider";
-// import { AuthContext } from "@/contexts/authContext";
+
+
 type Inputs = {
    userContent: string;
 }

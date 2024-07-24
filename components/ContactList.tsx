@@ -28,9 +28,7 @@ export default function ContactList() {
       const fetchData = async () => {
          try {
             const userList = await list(controller.signal);
-            const result = await userList;
-            console.log(userList);
-            setContactList(userList.users);
+            setContactList(await userList.users);
          } catch (err) {
             console.log('Failed to fetch users');
          }
