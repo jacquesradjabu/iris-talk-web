@@ -21,12 +21,19 @@ export default function UserMessage({
    messageContent,
    avatarURL,
    state,
-   time }: {
-      messageContent: string;
-      avatarURL?: string;
-      state?: boolean;
-      time: string;
-   }) {
+   currentId,
+   currentUserId,
+   senderName,
+   time
+}: {
+   messageContent: string;
+   avatarURL?: string;
+   state?: boolean;
+   time: string;
+   currentId: string;
+   currentUserId: string;
+   senderName: string;
+}) {
    if (state) {
       return (
          <div className="flex justify-end mb-4 cursor-pointer" >
@@ -54,6 +61,7 @@ export default function UserMessage({
             )}
          </div>
          <div className="flex flex-col max-w-96 bg-gray-50 rounded-lg p-3 gap-3  border border-gray-300">
+            <p>{senderName}</p>
             <p>{messageContent}</p>
             <p className="text-sm text-gray-500 text-right">{time}</p>
          </div>
