@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
+"use client";
+import { SubmitHandler } from "react-hook-form";
 export default function Button({
    title,
    type,
@@ -25,7 +25,7 @@ export default function Button({
    title?: string;
    type?: "reset" | "button" | undefined;
    className?: string;
-   handleClick?: () => void | null;
+   handleClick?: () => void | null | SubmitHandler<InputProps>;
 }
 ) {
    return (

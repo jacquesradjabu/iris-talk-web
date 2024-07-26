@@ -18,9 +18,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "@/components/Button";
-import Avatar from "@/components/Avatar";
 import { useRouter } from "next/navigation";
-import { FaCalendarWeek } from 'react-icons/fa';
+import { FaCalendarWeek, FaUserCheck } from 'react-icons/fa';
 
 
 export default function ProfileId({ params }: {
@@ -62,9 +61,12 @@ export default function ProfileId({ params }: {
                 <div className="px-4 pb-6">
                     <div className="text-center my-4">
                         <div className="flex items-center justify-center">
-                            <Avatar
-                                className="w-32 h-32"
-                            />
+                            <div className="bg-blue-500 p-5 rounded-full">
+                                <FaUserCheck
+                                    size={40}
+                                    color="#fff"
+                                />
+                            </div>
                         </div>
                         {loading ? (
                             <div className="animate-pulse flex flex-col items-center">

@@ -14,6 +14,12 @@ interface IUser {
    setUserDescription: Dispatch<SetStateAction<string>>
 }
 
+interface InputProps {
+   userName?: string;
+   userEmail?: string;
+   userAvatar?: string;
+   userDescription?: string;
+}
 
 interface IInputProps {
    type?: string;

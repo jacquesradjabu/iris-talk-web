@@ -17,11 +17,13 @@
 "use client";
 import { FaSearch } from 'react-icons/fa';
 import UserCard from './UserCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { list } from '@/utils/userAPI';
 import Link from 'next/link';
+import { AuthContext } from '@/contexts/authContext';
 
 export default function ContactList() {
+   const { userId } = useContext(AuthContext);
    let [contactList, setContactList] = useState<any>(null);
    useEffect(() => {
       const controller = new AbortController();
@@ -38,7 +40,7 @@ export default function ContactList() {
    return (
       <div className="overflow-y-auto h-screen p-3 mb-9 pb-20">
 
-         <div className="w-full flex p-2 mb-3 rounded-md px-4 bg-blue-400 text-[#f5f5f5]">
+         <div className="w-full flex p-2 mb-3 rounded-md px-4 bg-blue-300 text-[#f5f5f5]">
             <input
                type="search"
                placeholder="search a friend"
@@ -51,18 +53,20 @@ export default function ContactList() {
 
          {
             contactList?.length == 0 || !contactList || contactList == null ? (
-               <p className="text-sm text-gray-400 text-center">No contacts found</p>
+               <p className="text-sm text-gray-400 text-center">No contacts registered yet</p>
             ) : (
-               contactList?.map((user: any) => (
-                  <Link
-                     key={user.userId}
-                     href={`/home/${user.userId}`}>
-                     <UserCard
-                        userName={user.userName}
-                        userEmail={user.userDescription ? user.userDescription : "I am a mysterious who has yet to fill out my bio"}
-                     />
-                  </Link>
-               ))
+               contactList
+                  ?.filter((contact: any) => contact.userId != localStorage.getItem('currentUserId') || userId)
+                  ?.map((user: any) => (
+                     <Link
+                        key={user.userId}
+                        href={`/home/${user.userId}`}>
+                        <UserCard
+                           userName={user.userName}
+                           userEmail={user.userDescription ? user.userDescription : "I am a mysterious who has yet to fill out my bio"}
+                        />
+                     </Link>
+                  ))
             )
          }
       </div>

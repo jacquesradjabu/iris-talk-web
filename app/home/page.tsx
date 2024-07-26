@@ -14,9 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+"use client";
+import { AuthContext } from "@/contexts/authContext";
 import Home from "@/screens/Home";
-
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
 export default function HomeScreen() {
+   const router = useRouter();
+   const currentUserId = localStorage.getItem('currentUserId');
+   const currentUserToken = localStorage.getItem('accessToken');
+   const { userId } = useContext(AuthContext);
+   if (!userId || (!currentUserId && currentUserToken))  {
+      localStorage.clear();
+      sessionStorage.clear();
+      router.push('/');
+   }
+   // I will add another function to check if the user is authenticated with a good token
    return (
       <div>
          hello IRIS TALK

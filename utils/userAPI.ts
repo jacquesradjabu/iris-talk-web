@@ -16,7 +16,6 @@
  */
 import axios from 'axios';
 
-
 // fetch all users available in the database
 
 export async function list(signal?: AbortSignal) {
@@ -61,7 +60,7 @@ export async function read(
          headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzMmI0OTk1Yi0yN2ZlLTQwNDItODc5YS1lOTNkYjk1NDRlMDIiLCJpYXQiOjE3MjE3MjMzNzZ9.Zn-UvmfVzawKjEZ4ZIMZUwzXLwD9lPBsaJA2N5FJDkA'}`
+            'Authorization': `Bearer ${currentUserToken}`
          },
          signal: signal
       });

@@ -22,17 +22,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Alert from "./Alert";
 import { useState } from "react";
+import { AiOutlineUserSwitch } from 'react-icons/ai';
 import axios from "axios";
 
 
 
-export default function SidebarHeader({
-   avatarURL,
-   userName = 'Birusha'
-}: {
-   avatarURL: string,
-   userName: string
-}) {
+export default function SidebarHeader({ avatarURL, }: { avatarURL?: string; }) {
    const router = useRouter();
    const [isVisible, setIsVisible] = useState(false);
    const cancel = () => {
@@ -60,7 +55,6 @@ export default function SidebarHeader({
                   <path d="M110 95C110 98.3137 107.314 101 104 101C100.686 101 98 98.3137 98 95C98 91.6863 100.686 89 104 89C107.314 89 110 91.6863 110 95Z" fill="white" />
                   <path d="M93 118L98 108L103 118H93Z" fill="#4A90E2" />
                </svg>
-
             </div>
             <h1 className="text-2xl font-semibold text-blue-400 hover:text-blue-500">IRIS</h1>
          </Link>
@@ -70,7 +64,11 @@ export default function SidebarHeader({
                   {avatarURL ? (
                      <Image src={avatarURL} alt="Avatar" layout="fill" className={`w-10 h-10`} />
                   ) : (
-                     <Avatar />
+                     <Avatar
+                        className="w-32 h-32"
+                        userName={"Birusha"}
+                        avatarURL={null}
+                     />
                   )}
                </div>
             </Link>
@@ -86,7 +84,11 @@ export default function SidebarHeader({
             isVisible={isVisible}
             logout={signout}
             description="Are you sure to log out?"
-         />
+         >
+            <AiOutlineUserSwitch
+               className='mx-auto mb-4 text-gray-400 w-12 h-12'
+            />
+         </Alert>
       </header>
    );
 }

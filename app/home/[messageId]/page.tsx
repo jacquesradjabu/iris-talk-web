@@ -1,13 +1,14 @@
 "use client";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { newMessageData } from '@/data/newMessageData';
 import ChatHeader from "@/components/ChatHeader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import UserMessage from "@/components/UserMessage";
-import { messageData } from "@/data/messageData";
 import { sendMessage, getTalk } from "@/utils/messageAPI";
 import { AuthContext } from "@/contexts/authContext";
+import { FaGifts, FaConnectdevelop, FaSpeakap, } from 'react-icons/fa';
+import { AiFillWechat, } from 'react-icons/ai';
+import { LuHeartHandshake, } from 'react-icons/lu'
 
 type Inputs = {
    messageContent: string;
@@ -88,30 +89,26 @@ export default function MessageByUser({ params }: {
             userId={params.messageId}
          />
          {/* <!-- Chat Messages --> */}
-
-
-         {/* <ChatMessages /> */}
          <div className="h-screen overflow-y-auto p-4 pb-36">
-            {/* {
-               messageData.map((item: any, index: any) => (
-                  <UserMessage key={index} messageContent={item.messageContent} time={item.time} state={item.state} />
-               ))
-            } */}
 
             {
                messageList.length == 0 || !messageList ? (
-                  <h1 className="text-3xl font-medium text-center mb-4">Say Hello to <span className="text-blue-500">{senderName}</span></h1>
+                  <div className="mt-4 flex flex-col items-center justify-center">
+                     <h1 className="mb-5 text-lg font-normal text-gray-500 text-center">Say Hello to {senderName}</h1>
+                     <AiFillWechat
+                        size={64}
+                        className="fill-blue-300"
+                     />
+                  </div>
                ) : (
                   messageList.map((message: any) => (
                      <UserMessage
                         key={message.messageId}
                         messageContent={message.messageContent}
                         time={message.created}
-                        state={message.state}
                         currentId={localStorage.getItem('currentUserId') || userId}
                         currentUserId={message.senderId}
                         senderName={message.sender.userName}
-                        // s={message.senderId}
                      />
                   ))
                )

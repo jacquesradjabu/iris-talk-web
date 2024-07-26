@@ -14,13 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { ReactNode } from 'react';
 import { FaInfoCircle } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
-export default function Alert({ description, showVisibility, isVisible, logout }: {
+export default function Alert({ description, showVisibility, isVisible, logout, children }: {
    showVisibility: () => void;
    isVisible: boolean;
    logout?: () => void | any;
+   delete?: () => void
    description?: string;
+   children?: ReactNode
 }) {
    return (
       <div className={`overflow-y-auto overflow-x-hidden asbolut top-0 right-0 left-0 z-50 md:inset-0 h-screen w-screen fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center ${isVisible ? "" : 'hidden'}`}>
@@ -32,9 +35,18 @@ export default function Alert({ description, showVisibility, isVisible, logout }
                   />
                </button>
                <div className="p-4 md:p-5 text-center">
-                  <FaInfoCircle
-                     className='mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200'
-                  />
+                  {
+                     children ? (
+                        <>
+                           {children}
+                        </>
+                     ) : (
+                        <FaInfoCircle
+                           className='mx-auto mb-4 text-gray-400 w-12 h-12'
+                        />
+                     )
+                  }
+
                   <h3 className="mb-5 text-lg font-normal text-gray-500">{description}</h3>
                   <button type="button" className="text-gray-50 bg-red-400 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center" onClick={logout}>
                      Yes, I'm sure
